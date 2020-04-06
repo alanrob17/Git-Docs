@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Using Git</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/starter-template.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>
+	<style type="text/css">
+	h2 {
+		margin-top: 60px;
+	}
+	
+	h4, h3 {
+		padding-top: 40px!;		
+	}
+	
+	p {
+		font-size: 1.2em;
+	}
+
+	h4 {
+		font-size: 1.4em;
+	}
+	
+	img, pre.prettyprint {
+		margin-top: 1.5em;
+		margin-bottom: 1.5em;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color:#007bff;
+  
+    }
+	</style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="#">Using Git</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Notes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="starter-template">
+
+<h1 class="code-line" data-line-start=0 data-line-end=1 ><a id="Using_Git_0"></a>Using Git</h1>
+<p class="has-line-data" data-line-start="2" data-line-end="3">Check the version of Git you are currently using.</p>
+<pre class="prettyprint">git --version
+</pre>
+<h2 class="code-line" data-line-start=6 data-line-end=7 ><a id="Update_Git_6"></a>Update Git</h2>
+<pre class="prettyprint">git update-git-for-windows
+</pre>
+<p class="has-line-data" data-line-start="10" data-line-end="11">Git changes the path to add the following variables.</p>
+<pre class="prettyprint">C:\Program Files\Git\cmd;
+
+C:\Program Files\Git\mingw64\bin;
+
+C:\Program Files\Git\usr\bin;
+</pre>
+<p class="has-line-data" data-line-start="19" data-line-end="20">Git creates a  config file in your users directory. Mine is C:\Users\alanr</p>
+<pre class="prettyprint">cat .gitconfig
+</pre>
+<p class="has-line-data" data-line-start="24" data-line-end="25">.</p>
+<pre class="prettyprint">[user]
+    name = Alan Robson
+    email = alanr@live.com.au
+</pre>
+<p class="has-line-data" data-line-start="30" data-line-end="31">You can also have a project level configuration file.</p>
+<pre class="prettyprint">my_project/.git/config
+</pre>
+<p class="has-line-data" data-line-start="34" data-line-end="35">You can make configuration changes on the following levels</p>
+<h4 class="code-line" data-line-start=36 data-line-end=37 ><a id="System_36"></a>System</h4>
+<pre class="prettyprint">git config --system
+</pre>
+<h4 class="code-line" data-line-start=40 data-line-end=41 ><a id="User_40"></a>User</h4>
+<pre class="prettyprint">git config --global
+</pre>
+<h4 class="code-line" data-line-start=44 data-line-end=45 ><a id="Project_44"></a>Project</h4>
+<pre class="prettyprint">git config
+</pre>
+<h3 class="code-line" data-line-start=48 data-line-end=49 ><a id="Changing_settings_48"></a>Changing settings</h3>
+<p class="has-line-data" data-line-start="50" data-line-end="51">You can change settings with the following commands.</p>
+<pre class="prettyprint">git config --global user.name &quot;Alan Robson&quot;
+
+git config --global user.email &quot;alanr@live.com.au&quot;
+</pre>
+<p class="has-line-data" data-line-start="56" data-line-end="57">Check your configuration.</p>
+<pre class="prettyprint">git config --list
+</pre>
+<p class="has-line-data" data-line-start="60" data-line-end="61">Check an individual setting.</p>
+<pre class="prettyprint">git config user.name
+</pre>
+<p class="has-line-data" data-line-start="64" data-line-end="65">Change individual settings.</p>
+<pre class="prettyprint">git config --global core.editor &quot;C:\\Program Files\\Microsoft VS Code\\Code.exe --wait&quot;
+
+git config --global color.ui true
+</pre>
+<h2 class="code-line" data-line-start=70 data-line-end=71 ><a id="Git_Help_70"></a>Git Help</h2>
+<pre class="prettyprint">git help
+
+git help log
+</pre>
+<h3 class="code-line" data-line-start=77 data-line-end=78 ><a id="Change_drives_in_Git_bash_77"></a>Change drives in Git bash</h3>
+<pre class="prettyprint">cd /D/Projects/Dirb
+</pre>
+<h2 class="code-line" data-line-start=81 data-line-end=82 ><a id="Distributed_Version_Conrol_81"></a>Distributed Version Conrol</h2>
+<p class="has-line-data" data-line-start="83" data-line-end="84">Different users maintain their own repositories. (no central repository)</p>
+<p class="has-line-data" data-line-start="85" data-line-end="86">The changes are stored as <strong>change sets</strong> or <strong>patches</strong>.</p>
+<p class="has-line-data" data-line-start="87" data-line-end="88">We are tracking changes, not the versions of the document.</p>
+<p class="has-line-data" data-line-start="89" data-line-end="90">Change sets can be exchanged between repositories.</p>
+<p class="has-line-data" data-line-start="91" data-line-end="92">So you can “merge in changes sets” or “apply patches” between the different repositories.</p>
+<p class="has-line-data" data-line-start="94" data-line-end="95">No single master repository.</p>
+<p class="has-line-data" data-line-start="96" data-line-end="97">Many working copies each with their own combination of change sets.</p>
+<p class="has-line-data" data-line-start="98" data-line-end="99">These can then be merged at a later time or submitted for inclusion to the master copy.</p>
+<h2 class="code-line" data-line-start=100 data-line-end=101 ><a id="Getting_Started_with_Git_100"></a>Getting Started with Git</h2>
+<p class="has-line-data" data-line-start="102" data-line-end="103">In your projects directory create a new directory, e.g. Git-Docs.</p>
+<p class="has-line-data" data-line-start="104" data-line-end="105">cd into your new directory.</p>
+<pre class="prettyprint">cd /C/Git/Git-Docs
+</pre>
+<p class="has-line-data" data-line-start="108" data-line-end="109">Now initialise the directory</p>
+<pre class="prettyprint">git init
+</pre>
+<p class="has-line-data" data-line-start="112" data-line-end="113">You get the message.</p>
+<pre class="prettyprint">Initialized empty Git repository in C:/Git/Git-Docs/.git/
+</pre>
+<p class="has-line-data" data-line-start="116" data-line-end="117">This creates a hidden directory</p>
+<pre class="prettyprint">.git
+</pre>
+<p class="has-line-data" data-line-start="120" data-line-end="121">This is where Git tracks its changes.</p>
+<p class="has-line-data" data-line-start="122" data-line-end="123">There is a configuration file,</p>
+<pre class="prettyprint">cat .git/config
+</pre>
+<p class="has-line-data" data-line-start="126" data-line-end="127">This is user level configuration. This is also where the project configuration resides as well.</p>
+<p class="has-line-data" data-line-start="128" data-line-end="129">The rest of the <strong>.git</strong> directory you should leave alone and let Git handle it.</p>
+<p class="has-line-data" data-line-start="130" data-line-end="131">If you remove the <strong>.git</strong> directory you will remove all of the tracking for this project. Git centalises everything in this one directory.</p>
+<p class="has-line-data" data-line-start="132" data-line-end="133">I can now add files into my directory.</p>
+<p class="has-line-data" data-line-start="134" data-line-end="135">I can track the status of the project by.</p>
+<pre class="prettyprint">git status
+</pre>
+<p class="has-line-data" data-line-start="138" data-line-end="139">This will tell me that I have no commits yet and one untracked file.</p>
+<p class="has-line-data" data-line-start="140" data-line-end="141">I can now tell Git that I want to track the change and we can do that by.</p>
+<pre class="prettyprint">git add .
+</pre>
+<p class="has-line-data" data-line-start="144" data-line-end="145"><code>.</code> is shorthand for all the files in the current directory.</p>
+<p class="has-line-data" data-line-start="146" data-line-end="147">Once we have done this we have told Git to do this we aren’t tracking the changes and to make the changes permanent we need to commit them.</p>
+<pre class="prettyprint">git commit -m &quot;Initial commit.&quot;
+</pre>
+<p class="has-line-data" data-line-start="150" data-line-end="151">This is the process we are going to follow for every job we do.</p>
+<h3 class="code-line" data-line-start=152 data-line-end=153 ><a id="Your_first_commit_152"></a>Your first commit</h3>
+<ul>
+<li class="has-line-data" data-line-start="154" data-line-end="155">Make changes.</li>
+<li class="has-line-data" data-line-start="155" data-line-end="156">Add the changes.</li>
+<li class="has-line-data" data-line-start="156" data-line-end="158">Commit changes to the repository with a message.</li>
+</ul>
+<p class="has-line-data" data-line-start="158" data-line-end="159">We are going to do these three steps over and over again.</p>
+<p class="has-line-data" data-line-start="160" data-line-end="161">If I do a <em>git status</em> after I make some changes to the file I added it will tell me that the changes are not committed.</p>
+<h2 class="code-line" data-line-start=162 data-line-end=163 ><a id="Writing_good_Commit_messages_162"></a>Writing good Commit messages</h2>
+<p class="has-line-data" data-line-start="164" data-line-end="165">A short single-line summary of what the changes are (less than 50 characters).</p>
+<p class="has-line-data" data-line-start="166" data-line-end="167">You can write multi-line commits as well by adding a blank line for a more complete description.</p>
+<p class="has-line-data" data-line-start="168" data-line-end="169">Keep each line to less than 72 characters.</p>
+<p class="has-line-data" data-line-start="170" data-line-end="171">Write commit messages in present tense not past tense.</p>
+<p class="has-line-data" data-line-start="172" data-line-end="173">“Fixes a bug” or “Fixed a bug” not “Fixed a bug”.</p>
+<p class="has-line-data" data-line-start="174" data-line-end="175">The change message describes <em>what is in</em> a change set.</p>
+<p class="has-line-data" data-line-start="176" data-line-end="177">Bullet points are usually asterisks or hyphens. Can add “tracking numbers” from bug or support requests.</p>
+<p class="has-line-data" data-line-start="178" data-line-end="179">You can add the type of files that were changed in a shorthand [ccs, js] at the start of the message or the tracking number.</p>
+<p class="has-line-data" data-line-start="180" data-line-end="181">Make sure your messages are clear and descriptive.</p>
+<h2 class="code-line" data-line-start=182 data-line-end=183 ><a id="View_the_Commit_log_182"></a>View the Commit log</h2>
+<pre class="prettyprint">git log
+</pre>
+<p class="has-line-data" data-line-start="186" data-line-end="187">Will show me a list of commits made for each project with the newest entry at the top.</p>
+<pre class="prettyprint">commit 5e8ac3e4e470e43dc17ad181bca04183d6f805d6 (HEAD -&gt; master)
+Author: Alan Robson &lt;alanr@live.com.au&gt;
+Date:   Sun Sep 22 12:43:54 2019 +1000
+
+    Initial commit.
+</pre>
+<p class="has-line-data" data-line-start="194" data-line-end="195">Information in the message includes the sha value which is a unique key we can use to identify each commit. It shows me the author details and date of commit and gives me the message for the commit.</p>
+<p class="has-line-data" data-line-start="196" data-line-end="197">There are some other options in the <em>git log</em> command.</p>
+<pre class="prettyprint">git log -n 5
+</pre>
+<p class="has-line-data" data-line-start="200" data-line-end="201">Limits the number of commits to 5.</p>
+<pre class="prettyprint">git log --since 2019-01-01
+</pre>
+<p class="has-line-data" data-line-start="204" data-line-end="205">Shows me the commits since the start of this year.</p>
+<pre class="prettyprint">git log --author=&quot;Alan&quot;
+</pre>
+<p class="has-line-data" data-line-start="208" data-line-end="209">I don’t have to type in the full name.</p>
+<pre class="prettyprint">git log --grep=&quot;Init&quot;
+</pre>
+<p class="has-line-data" data-line-start="212" data-line-end="213">or</p>
+<pre class="prettyprint">git log --grep=&quot;[Ii]nit&quot;
+</pre>
+<p class="has-line-data" data-line-start="216" data-line-end="217">This would be handy for bug fixes if you had referenced that in your commits.</p>
+<h2 class="code-line" data-line-start=218 data-line-end=219 ><a id="Setting_up_Github_218"></a>Setting up Github</h2>
+<p class="has-line-data" data-line-start="220" data-line-end="221">I am using Azure DevOps because it keeps my Git projects private.</p>
+<p class="has-line-data" data-line-start="222" data-line-end="223">I create a new repo and give it the same name as my local repository.</p>
+<p class="has-line-data" data-line-start="224" data-line-end="225">My repository will be named <code>Git-Docs</code>.</p>
+<p class="has-line-data" data-line-start="226" data-line-end="227">I will get a set of commands that I can use to link my local repository to my Azure repository.</p>
+<p class="has-line-data" data-line-start="228" data-line-end="229">First make sure that you don’t already have a remote repository.</p>
+<pre class="prettyprint">git remote -v
+</pre>
+<p class="has-line-data" data-line-start="232" data-line-end="233">If you don’t have a remote repository you can now create one.</p>
+<pre class="prettyprint">git remote add origin https://alanr.visualstudio.com/Git-Docs/_git/Git-Docs
+</pre>
+<p class="has-line-data" data-line-start="236" data-line-end="237">I can then push to the remote server.</p>
+<pre class="prettyprint">git push -u origin --all
+</pre>
+<p class="has-line-data" data-line-start="240" data-line-end="241">This will push all of my files up to the remote Azure server.</p>
+<h2 class="code-line" data-line-start=242 data-line-end=243 ><a id="Git_Concepts_and_Architecture_242"></a>Git Concepts and Architecture</h2>
+<p class="has-line-data" data-line-start="244" data-line-end="245">The usual structure for a version control system is a two tree structure.</p>
+<p class="has-line-data" data-line-start="246" data-line-end="247"><img src="assets/git/twotree.jpg" alt="Two tree structure" title="Two tree structure"></p>
+<p class="has-line-data" data-line-start="248" data-line-end="249">The repository has a set of files. We then checkout those files to our working directory. At this stage they are the same.</p>
+<p class="has-line-data" data-line-start="250" data-line-end="251">When we finish doing changes in our working directory we commit those files back to the repository. We have two distinct trees.</p>
+<p class="has-line-data" data-line-start="252" data-line-end="253">Imagine that I have added information into my working files but haven’t committed them back to the repository. Both sets of files are saved but in different states.</p>
+<h3 class="code-line" data-line-start=254 data-line-end=255 ><a id="The_Three_Trees_254"></a>The Three Trees</h3>
+<p class="has-line-data" data-line-start="256" data-line-end="257">Git uses a three tree structure. It still has the repository and the working copy but also has a staging index tree in between the other two trees.</p>
+<p class="has-line-data" data-line-start="258" data-line-end="259"><img src="assets/git/threetree.jpg" alt="Three tree structure" title="Three tree structure"></p>
+<p class="has-line-data" data-line-start="260" data-line-end="261">We have to save our files twice in a two-step process.</p>
+<p class="has-line-data" data-line-start="262" data-line-end="263">The first save is <strong>add</strong> to the staging index and then we <strong>commit</strong> to the repository.</p>
+<p class="has-line-data" data-line-start="264" data-line-end="265">We can skip the <strong>add</strong> step and commit directly to the repository. We will see this later but you should imagine a two-step procedure.</p>
+<p class="has-line-data" data-line-start="266" data-line-end="267">The reason for this is that we can have a number of changes to files in our working directory but only want to commit some of those to the repository. The three tree structure allows us to do this. We add the changes we want to the staging and get them ready before we commit them.</p>
+<p class="has-line-data" data-line-start="268" data-line-end="269">We can also go the other way. Pull them from the repository to the staging and then move them to the working but this isn’t something we would usually do.</p>
+<p class="has-line-data" data-line-start="270" data-line-end="271">Usually we would pull from the repository directly to the working tree. In the process staging will be updated as well.</p>
+<p class="has-line-data" data-line-start="272" data-line-end="273">As you are working with Git it is worthwhile keeping these three trees in mind.</p>
+<p class="has-line-data" data-line-start="274" data-line-end="275">There is your working directory that has changes that might not be tracked by Git yet.</p>
+<p class="has-line-data" data-line-start="276" data-line-end="277">Then there is the staging index the contains changes that we are about to commit to the repository.</p>
+<p class="has-line-data" data-line-start="278" data-line-end="279">Finally there is the repository that is being tracked by Git. The changes that Git has and that it is going to keep hold of and keep track of.</p>
+<h3 class="code-line" data-line-start=280 data-line-end=281 ><a id="Git_Workflow_280"></a>Git Workflow</h3>
+<p class="has-line-data" data-line-start="282" data-line-end="283">We will discuss a simple file and watch how it changes and is uploaded to the repository.</p>
+<p class="has-line-data" data-line-start="284" data-line-end="285"><img src="assets/git/original-file.jpg" alt="The original file" title="The original file"></p>
+<p class="has-line-data" data-line-start="286" data-line-end="287">We have a file that is version 1 in our working directory. We call these changes <code>A</code>.</p>
+<p class="has-line-data" data-line-start="288" data-line-end="289"><img src="assets/git/version-a.jpg" alt="Version A" title="Version A"></p>
+<p class="has-line-data" data-line-start="290" data-line-end="291">So at present it is in our working directory not our staging or our repository.</p>
+<pre class="prettyprint">git add file.txt
+</pre>
+<p class="has-line-data" data-line-start="294" data-line-end="295">Will add our file to the staging index.</p>
+<p class="has-line-data" data-line-start="296" data-line-end="297"><strong>Note:</strong></p>
+<p class="has-line-data" data-line-start="298" data-line-end="299">We can <em>add</em> all files with a <code>.</code> or add multiple files in one commit.</p>
+<pre class="prettyprint">git add file1.txt file2.txt
+</pre>
+<p class="has-line-data" data-line-start="302" data-line-end="303">We can also add a directory of files.</p>
+<pre class="prettyprint">git add tours/
+
+Will save all files in the tours directory.
+</pre>
+<p class="has-line-data" data-line-start="308" data-line-end="309"><img src="assets/git/staging-a.jpg" alt="Staging A" title="Staging A"></p>
+<p class="has-line-data" data-line-start="310" data-line-end="311">Note: that at the moment we are just specifying a single file to be added.</p>
+<p class="has-line-data" data-line-start="312" data-line-end="313">We now use.</p>
+<pre class="prettyprint">git commit
+</pre>
+<p class="has-line-data" data-line-start="316" data-line-end="317">(we would add a message at this stage)</p>
+<p class="has-line-data" data-line-start="318" data-line-end="319">This pushes that changeset into the repository.</p>
+<p class="has-line-data" data-line-start="320" data-line-end="321"><img src="assets/git/repository-a.jpg" alt="Repository A" title="Repository A"></p>
+<p class="has-line-data" data-line-start="322" data-line-end="323">So now we have the same file (changeset) in our working staging and repository.</p>
+<p class="has-line-data" data-line-start="324" data-line-end="325">Now imagine we are going to make changes to that file. So now we have version 2. We can refer to this changeset as B.</p>
+<p class="has-line-data" data-line-start="326" data-line-end="327"><img src="assets/git/working-b.jpg" alt="Working B" title="Working B"></p>
+<p class="has-line-data" data-line-start="328" data-line-end="329">We then use <code>git add file.txt</code> again to add the changeset to the staging index and the <code>git commit</code> to add the changeset to the repository.</p>
+<p class="has-line-data" data-line-start="330" data-line-end="331"><img src="assets/git/repository-b.jpg" alt="Repository B" title="Repository B"></p>
+<p class="has-line-data" data-line-start="332" data-line-end="333">Now the repository has two sets of changes in it (set A and set B).</p>
+<p class="has-line-data" data-line-start="334" data-line-end="335">You could keep adding to this.</p>
+<p class="has-line-data" data-line-start="336" data-line-end="337"><img src="assets/git/repository-c.jpg" alt="Repository C" title="Repository C"></p>
+<p class="has-line-data" data-line-start="338" data-line-end="339">Now you can use <code>git log</code> to view those three commits (A,B, and C) to see what changed between each one. Of course Git doesn’t refer to them as A,B and C but has a unique ID number that it applies to each changeset.</p>
+<h3 class="code-line" data-line-start=340 data-line-end=341 ><a id="More_on_workflow_340"></a>More on workflow</h3>
+<p class="has-line-data" data-line-start="342" data-line-end="343">Now that we have added a remote repository there is an extra step in our process before we can upload files to all repositories. Carry out these steps</p>
+<pre class="prettyprint">git status
+</pre>
+<p class="has-line-data" data-line-start="346" data-line-end="347">If there are unmodified files then you need to do this.</p>
+<pre class="prettyprint">git add .
+</pre>
+<p class="has-line-data" data-line-start="350" data-line-end="351">This will upload all changeset files to staging index.</p>
+<pre class="prettyprint">git commit -m &quot;Added workflow notes&quot;
+</pre>
+<p class="has-line-data" data-line-start="354" data-line-end="355">Will commit the files to the local repository.</p>
+<p class="has-line-data" data-line-start="356" data-line-end="357">At this stage all files are in the same state.</p>
+<p class="has-line-data" data-line-start="358" data-line-end="359">Do a <code>git status</code> to make sure that nothing is modified and if so then push the latest files to the Azure repository.</p>
+<pre class="prettyprint">git push -u origin --all
+</pre>
+<p class="has-line-data" data-line-start="362" data-line-end="363">or now that the remote files have been initially pushed you can use this command.</p>
+<pre class="prettyprint">git push
+</pre>
+<p class="has-line-data" data-line-start="366" data-line-end="367">After this all files in the local and remote repositories are in the same state. Run a <code>git status</code> and you should receive this message.</p>
+<pre class="prettyprint">On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+</pre>
+<h3 class="code-line" data-line-start=373 data-line-end=374 ><a id="Hash_values_SHA1_373"></a>Hash values (SHA-1)</h3>
+<p class="has-line-data" data-line-start="375" data-line-end="376">So far we have only worked with one file but usually it will be multiple files and directories and when we save it will a snapshot of all of those files in a changeset. We called the changesets A, B and C for simplicity but that is not how Git refers to them. Git generates a checksum for each changeset that is a hash value.</p>
+<p class="has-line-data" data-line-start="377" data-line-end="378">A checksum is a number that is calculated by taking the data and feeding it into a mathematical algorithm.</p>
+<p class="has-line-data" data-line-start="379" data-line-end="380">An important point to note is that the same data always equals the same checksum so it always returns the same results. That is why we call it a checksum because we can always check it and it will be the same. It is used to guarantee data integrity.</p>
+<p class="has-line-data" data-line-start="381" data-line-end="382">Data integrity is a fundamental that is built into Git.</p>
+<p class="has-line-data" data-line-start="383" data-line-end="384">The checksum that Git creates is tied to the data in that changeset. If you were to change that data then the label or hash value (checksum) would change. So each value is unique and directly tied to the contents inside of it.</p>
+<p class="has-line-data" data-line-start="385" data-line-end="386">Git uses the SHA-1 algorithm to create checksums. People refer to this as the sha value or s.h.a. value.</p>
+<p class="has-line-data" data-line-start="387" data-line-end="388">So if someone refers to the sha value of that commit they are talking about the checksum, the hash value that is used to refer to the value used to label the commit.</p>
+<p class="has-line-data" data-line-start="389" data-line-end="390">The number generated is a 40 character hexadecimal string.</p>
+<pre class="prettyprint">e.g. 94add12382d84b06472ba89d336c104cb646823a
+</pre>
+<p class="has-line-data" data-line-start="393" data-line-end="394">Not only does Git do that with our changeset it also does something else that is important for data integrity. In addition to using the code that is in one of our snapshots it also uses the metadata as well. That means that you can’t change the commit message or the commit author or the <strong>parent</strong> of the commit without also changing its sha value. That gives us a nice chain of data integrity because when it goes to create snapshot A it takes all of its data to create a sha value. When it goes to snapshot B is also goes through the same process and generates a sha value but it includes the snapshot value from A so it is linked to A. If something changes in A the checksum changes and it won’t point to B anymore.</p>
+<p class="has-line-data" data-line-start="395" data-line-end="396">So not only is there data integrity but there is also a history of changesets and how they relate to each other.</p>
+<p class="has-line-data" data-line-start="397" data-line-end="398"><img src="assets/git/changesets.jpg" alt="Changeset linking" title="Changeset linking"></p>
+<h3 class="code-line" data-line-start=399 data-line-end=400 ><a id="The_HEAD_value_399"></a>The HEAD value</h3>
+<p class="has-line-data" data-line-start="401" data-line-end="402">Git contains a reference variable called <strong>HEAD</strong>. We call this variable a pointer and its purpose is to point to or reference a specific commit in the repository.</p>
+<ul>
+<li class="has-line-data" data-line-start="403" data-line-end="404">Pointer to tip to the current branch (commit) in the repository.</li>
+<li class="has-line-data" data-line-start="404" data-line-end="405">Last state of repository, what was last checked out.</li>
+<li class="has-line-data" data-line-start="405" data-line-end="407">Points to parent of next commit where writing commits take place.</li>
+</ul>
+<p class="has-line-data" data-line-start="407" data-line-end="408">As we make new commits the pointer changes or moves to point to a new commit. The HEAD always refers to the tip or the current branch in our repository. It has nothing to do with the staging index or the working repository. We are tracking the current position in the repository. Imagine a cassette recorder whose head moves to where the recording has stopped. When the recording starts again the head moves to the next stop.</p>
+<p class="has-line-data" data-line-start="409" data-line-end="410">The HEAD pointer in Git is very similar it points to the place where we are going to start recording next. It’s the place where we left off in our repository with what we’ve committed.</p>
+<p class="has-line-data" data-line-start="411" data-line-end="412">To show how the HEAD works we will take the sha values from the previous diagram that shows our series of commits.</p>
+<p class="has-line-data" data-line-start="413" data-line-end="414"><img src="assets/git/head-pointer.jpg" alt="HEAD pointer at the current branch" title="HEAD pointer at the current branch"></p>
+<p class="has-line-data" data-line-start="415" data-line-end="416">The HEAD points to the tip of our current branch in our repository.</p>
+<p class="has-line-data" data-line-start="417" data-line-end="418">It is the parent of the next commit we make so when we make our next commit is will be attached to the end next to <code>a614b5</code> that will become the parent. The HEAD becomes especially important when we start talking about branches.</p>
+<p class="has-line-data" data-line-start="419" data-line-end="420">The branch we are working on is called the master branch and that is our main branch.</p>
+<p class="has-line-data" data-line-start="421" data-line-end="422"><img src="assets/git/master-branch.jpg" alt="Master branch" title="Master branch"></p>
+<p class="has-line-data" data-line-start="423" data-line-end="424">We can create a new branch and the HEAD will move to that branch.</p>
+<p class="has-line-data" data-line-start="425" data-line-end="426"><img src="assets/git/new-branch.jpg" alt="New branch" title="New branch"></p>
+<p class="has-line-data" data-line-start="427" data-line-end="428">We can move the HEAD between the two branches. Git moves the HEAD for us we don’t have to be concerned with that.</p>
+<p class="has-line-data" data-line-start="429" data-line-end="430">For our repository we can see where the HEAD exists.</p>
+<pre class="prettyprint">ls -la .git
+</pre>
+<p class="has-line-data" data-line-start="433" data-line-end="434">You will see that there is a file named HEAD.</p>
+<pre class="prettyprint"> cat .git/HEAD
+ref: refs/heads/master
+</pre>
+<p class="has-line-data" data-line-start="438" data-line-end="439">This is telling us that we can find this information in the refs directory.</p>
+<pre class="prettyprint">cat .git/refs/heads/master
+938a47605721089babf0b4dfd7890fae7b91ac29
+</pre>
+<p class="has-line-data" data-line-start="443" data-line-end="444">.</p>
+<pre class="prettyprint">git log
+commit 938a47605721089babf0b4dfd7890fae7b91ac29 (HEAD -&gt; master, origin/master)
+Author: Alan Robson &lt;alanr@live.com.au&gt;
+Date:   Sun Sep 22 17:31:59 2019 +1000
+
+    Added more workflow notes.
+</pre>
+<p class="has-line-data" data-line-start="452" data-line-end="453">Note that <code>git log</code> will shows the commits and the latest sha value is the same as the one in <code>.git/refs/heads/master</code></p>
+<p class="has-line-data" data-line-start="454" data-line-end="455">The log also tells us that the sha value is the HEAD -&gt; master.</p>
+<p class="has-line-data" data-line-start="456" data-line-end="457">Git will move the head for us in most cases so we do not need to be aware of this but it is useful to understand the concept and what Git is doing for us.</p>
+<h2 class="code-line" data-line-start=459 data-line-end=460 ><a id="Make_changes_to_files_459"></a>Make changes to files</h2>
+<h3 class="code-line" data-line-start=461 data-line-end=462 ><a id="Add_files_461"></a>Add files</h3>
+<p class="has-line-data" data-line-start="463" data-line-end="464">When you have committed your files you do a <code>git status</code> it will tell you that there is nothing to commit and your working tree is clean.</p>
+<p class="has-line-data" data-line-start="465" data-line-end="466">If you add new files to you directory and do another <code>git status</code> you will get a different message. On branch master you have untracked files and a list of the files that aren’t being tracked. There is also a message that you can use <code>git add</code> to track these files.</p>
+<p class="has-line-data" data-line-start="467" data-line-end="468">If we make any changes to these files before we do the <code>git add</code> process then these changes won’t be tracked. So in this case you won’t have a record of what has changed.</p>
+<p class="has-line-data" data-line-start="469" data-line-end="470">Doing a <code>git add</code> will move the files into the staging tree.</p>
+<p class="has-line-data" data-line-start="471" data-line-end="472">You cna move all files with a <code>.</code> or name each file to be added. Say we had two files to add, second_file.txt and third_file.txt.</p>
+<p class="has-line-data" data-line-start="473" data-line-end="474">We will only add one file, second_file.txt.</p>
+<p class="has-line-data" data-line-start="475" data-line-end="476">Now do a <code>git status</code> again and you will see the following message.</p>
+<p class="has-line-data" data-line-start="477" data-line-end="478"><img src="assets/git/git-add.jpg" alt="Git add" title="Git add"></p>
+<p class="has-line-data" data-line-start="479" data-line-end="480">It will tell you that you have one file to be committed (unstaged) and one file to add (untracked).</p>
+<p class="has-line-data" data-line-start="481" data-line-end="482">We can commit our one staging file by.</p>
+<pre class="prettyprint">git commit -m &quot;Add second file to project.&quot;
+</pre>
+<p class="has-line-data" data-line-start="485" data-line-end="486">Do a <code>git log</code> and you will see that there is a new sha value and that the HEAD has moved.</p>
+<p class="has-line-data" data-line-start="487" data-line-end="488">Now you can <code>git add third_file</code> to move the untracked file to staging and then do a <code>git commit -m &quot;Add third file to project&quot;</code>.</p>
+<p class="has-line-data" data-line-start="489" data-line-end="490"><code>git log</code> will tell you that the third_file.txt was committed (the HEAD will have moved) and a <code>git status</code> will tell you that there is nothing else to do.</p>
+<h3 class="code-line" data-line-start=491 data-line-end=492 ><a id="View_changes_with_diff_491"></a>View changes with <code>diff</code></h3>
+<p class="has-line-data" data-line-start="493" data-line-end="494">This allows us to see changes in our working directory.</p>
+<pre class="prettyprint">git diff
+</pre>
+<p class="has-line-data" data-line-start="497" data-line-end="498">.</p>
+<pre class="prettyprint">diff --git a/UsingGit.md b/UsingGit.md
+index dc92054..6e7d904 100644
+--- a/UsingGit.md
++++ b/UsingGit.md
+</pre>
+<p class="has-line-data" data-line-start="504" data-line-end="505">File <strong>a</strong> is in my repository and file <strong>b</strong> is in my working directory. The list has a number of <code>+</code> lines which have been added to my working file. They are also coloured green.</p>
+<p class="has-line-data" data-line-start="506" data-line-end="507">The <code>-</code> will tell you a line has been changed or removed.</p>
+<p class="has-line-data" data-line-start="508" data-line-end="509"><strong>Note:</strong></p>
+<p class="has-line-data" data-line-start="510" data-line-end="511">We can do a <em>diff</em> on a particular file in the changeset.</p>
+<pre class="prettyprint">git diff file.txt
+</pre>
+<h3 class="code-line" data-line-start=514 data-line-end=515 ><a id="View_only_staged_changes_514"></a>View only staged changes</h3>
+<pre class="prettyprint">git diff --staged
+</pre>
+<p class="has-line-data" data-line-start="518" data-line-end="519">This will show us the differences between the staging area and the repository.</p>
+<pre class="prettyprint">git diff --cached
+</pre>
+<p class="has-line-data" data-line-start="522" data-line-end="523">Is exactly the same thing as <code>--staged</code>. cached is an alias but it is preferable to use staged.</p>
+<h3 class="code-line" data-line-start=524 data-line-end=525 ><a id="Deleting_files_524"></a>Deleting files</h3>
+<p class="has-line-data" data-line-start="526" data-line-end="527">You have to tell Git that you want to delete files that you have committed.</p>
+<p class="has-line-data" data-line-start="528" data-line-end="529">First add a couple of files to your project to delete.</p>
+<p class="has-line-data" data-line-start="530" data-line-end="531">file-delete1.txt</p>
+<p class="has-line-data" data-line-start="532" data-line-end="533">file-delete2.txt</p>
+<p class="has-line-data" data-line-start="534" data-line-end="535">Commit these new files to your repositories.</p>
+<p class="has-line-data" data-line-start="536" data-line-end="537">There are two ways to delete files from your project.</p>
+<p class="has-line-data" data-line-start="538" data-line-end="539">The first technique is to just delete the file from the directory. We will delete file 1.</p>
+<p class="has-line-data" data-line-start="540" data-line-end="541"><code>git status</code> will give you the message.</p>
+<pre class="prettyprint">Changes not staged for commit:
+  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+        deleted:    file-delete1.txt
+</pre>
+<p class="has-line-data" data-line-start="547" data-line-end="548">It tells you that you have deleted a file.</p>
+<p class="has-line-data" data-line-start="549" data-line-end="550">Now to remove it from Git.</p>
+<pre class="prettyprint">git rm file-delete1.txt
+</pre>
+<p class="has-line-data" data-line-start="553" data-line-end="554">it will give you this message. It tells you that it has removed the file from the repository.</p>
+<pre class="prettyprint">git rm file-delete1.txt
+rm 'file-delete1.txt'
+</pre>
+<p class="has-line-data" data-line-start="558" data-line-end="559"><code>git status</code> tells us that the file is now in the staging area.</p>
+<pre class="prettyprint">Changes to be committed:
+  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+        deleted:    file-delete1.txt
+</pre>
+<p class="has-line-data" data-line-start="564" data-line-end="565">Now to get rid of it from staging.</p>
+<pre class="prettyprint">git commit -m &quot;Delete first file.&quot;
+</pre>
+<p class="has-line-data" data-line-start="568" data-line-end="569">You get this message.</p>
+<pre class="prettyprint"> git commit -m &quot;Delete first file.&quot;
+[master 6f42ee0] Delete first file.
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 file-delete1.txt
+</pre>
+<p class="has-line-data" data-line-start="575" data-line-end="576">The second technique to remove a file is to tell Git to remove it.</p>
+<pre class="prettyprint">git rm file-delete2.txt
+</pre>
+<p class="has-line-data" data-line-start="579" data-line-end="580">You will get a message saying that Git has removed the file. If you look in your directory you will see that it has gone. It is a Unix command that has removed the file and you will notice that it isn’t in your recycle bin as well.</p>
+<p class="has-line-data" data-line-start="581" data-line-end="582">It is still in the repository so we could get a copy from there if we needed it.</p>
+<p class="has-line-data" data-line-start="583" data-line-end="584"><code>git status</code> tells you that the file 2 is in the staging directory.</p>
+<p class="has-line-data" data-line-start="585" data-line-end="586">This is a step shorter than the first technique as Git deletes the file for you and adds it to the staging directory.</p>
+<pre class="prettyprint">git commit -m &quot;Delete second file.&quot;
+</pre>
+<p class="has-line-data" data-line-start="589" data-line-end="590"><code>git status</code> should report that there is nothing to do.</p>
+<h3 class="code-line" data-line-start=591 data-line-end=592 ><a id="Move_and_rename_files_591"></a>Move and rename files</h3>
+<p class="has-line-data" data-line-start="593" data-line-end="594">There are two techniques to move or rename files.</p>
+<p class="has-line-data" data-line-start="595" data-line-end="596">The first is to rename the file in my directory.</p>
+<p class="has-line-data" data-line-start="597" data-line-end="598"><code>git status</code> tells me that there are two files changed.</p>
+<p class="has-line-data" data-line-start="599" data-line-end="600"><img src="assets/git/rename-file.jpg" alt="Rename file" title="Rename file"></p>
+<p class="has-line-data" data-line-start="601" data-line-end="602">The original filename has been deleted and the renamed file isn’t being tracked. It is listing them as two separate events.</p>
+<p class="has-line-data" data-line-start="603" data-line-end="604">So now you have two steps to do.</p>
+<pre class="prettyprint">git add primary_file.txt
+git rm first_file.txt
+</pre>
+<p class="has-line-data" data-line-start="608" data-line-end="609"><img src="assets/git/rename-file.jpg" alt="Rename file" title="Rename file"></p>
+<p class="has-line-data" data-line-start="610" data-line-end="611">Git now recognises that we have renamed the file. It doesn’t pick up on it initially but it does pick it up in staging.</p>
+<p class="has-line-data" data-line-start="612" data-line-end="613">The next technique for renaming a file is to <strong>move</strong> it.</p>
+<pre class="prettyprint">git mv second_file.txt secondary_file.txt
+</pre>
+<p class="has-line-data" data-line-start="616" data-line-end="617">The file name has been changed in our directory and <code>git status</code> tells us that the file has been added to our staging area and that we have renamed the file.</p>
+<p class="has-line-data" data-line-start="618" data-line-end="619"><img src="assets/git/rename-second-file.jpg" alt="Rename second file" title="Rename second file"></p>
+<p class="has-line-data" data-line-start="620" data-line-end="621">The second technique is a little more efficient.</p>
+<p class="has-line-data" data-line-start="622" data-line-end="623">Now we can add a new directory into our project and then move a file from the root into the new directory.</p>
+<p class="has-line-data" data-line-start="624" data-line-end="625"><img src="assets/git/new-directory.jpg" alt="New directory" title="New directory"></p>
+<p class="has-line-data" data-line-start="626" data-line-end="627">The file will be flagged as deleted and the new directory will be flagged as a new file that is untracked.</p>
+<p class="has-line-data" data-line-start="628" data-line-end="629">Now in the directory shift the file back into the root and run this command.</p>
+<pre class="prettyprint">git mv third_file.txt first_directory/third_file.txt
+</pre>
+<p class="has-line-data" data-line-start="633" data-line-end="634"><img src="assets/git/move-file.jpg" alt="Move file" title="Move file"></p>
+<p class="has-line-data" data-line-start="635" data-line-end="636">This is more efficient as it puts all the changes into staging. It has also moved the file.</p>
+<p class="has-line-data" data-line-start="637" data-line-end="638">Now wrap up by committing the changes.</p>
+<h3 class="code-line" data-line-start=639 data-line-end=640 ><a id="Diff_options_639"></a>Diff options</h3>
+<pre class="prettyprint">git diff
+</pre>
+<p class="has-line-data" data-line-start="643" data-line-end="644">This will fold (wrap) the text in bash. If you don’t want to fold text.</p>
+<pre class="prettyprint">-S
+</pre>
+<p class="has-line-data" data-line-start="647" data-line-end="648">To wrap again just do another -S.</p>
+<blockquote>
+<p class="has-line-data" data-line-start="649" data-line-end="650">b - to move back in the diff (or the Up arrow)</p>
+<p class="has-line-data" data-line-start="651" data-line-end="652">f - to move forward in the diff (or the Down arrow)</p>
+</blockquote>
+<p class="has-line-data" data-line-start="653" data-line-end="654">Diff will show the whole line of text that contains the change. If you only want to show the text is old and new.</p>
+<pre class="prettyprint">git diff --color-words
+</pre>
+<p class="has-line-data" data-line-start="657" data-line-end="658">This will highlight only the changed text in colour.</p>
+<p class="has-line-data" data-line-start="659" data-line-end="660">To compare two commits.</p>
+<pre class="prettyprint">git diff 12ac456..a234d4c6
+</pre>
+<p class="has-line-data" data-line-start="663" data-line-end="664">Where the first sha value is the oldest and the next sha value is later.</p>
+<p class="has-line-data" data-line-start="665" data-line-end="666">or</p>
+<pre class="prettyprint">git diff 12ac456..HEAD
+
+Where the first value is the older sha value and the next is the latest (HEAD) value.
+</pre>
+<p class="has-line-data" data-line-start="671" data-line-end="672">You can also select a changeset (commit) to view.</p>
+<pre class="prettyprint">git show 5337a16679e8a200d57354444fa84a95d3658f50
+</pre>
+<p class="has-line-data" data-line-start="675" data-line-end="676">Once again you could also add <code>--color-words</code> to this line</p>
+<pre class="prettyprint">git show 5337a16679e8a200d57354444fa84a95d3658f50 --color-words
+</pre>
+<h3 class="code-line" data-line-start=679 data-line-end=680 ><a id="Commit_in_one_step_679"></a>Commit in one step</h3>
+<p class="has-line-data" data-line-start="681" data-line-end="682">You can bypass the <code>add</code> to staging step.</p>
+<pre class="prettyprint">git commit -am &quot;Fixes blah, blah.&quot;
+</pre>
+<p class="has-line-data" data-line-start="685" data-line-end="686">Note: There are two important caveats.</p>
+<ul>
+<li class="has-line-data" data-line-start="687" data-line-end="688">Stages and commits all changes to <em>tracked</em> files.</li>
+<li class="has-line-data" data-line-start="688" data-line-end="690">Does not includes untracked files.</li>
+</ul>
+<p class="has-line-data" data-line-start="690" data-line-end="691">You can also commit with a multiple line message.</p>
+<pre class="prettyprint">git commit -a
+</pre>
+<p class="has-line-data" data-line-start="694" data-line-end="695">This will stop and wait for you to add a multiple line comment in your text editor.</p>
+<p class="has-line-data" data-line-start="696" data-line-end="697"><img src="assets/git/multiple-lines.jpg" alt="Multiple lines" title="Multiple lines"></p>
+<p class="has-line-data" data-line-start="698" data-line-end="699">Once you have saved and closed the commit message editor window in your text editor you will go back to bash and see the final message letting you know that you have committed your changeset.</p>
+<p class="has-line-data" data-line-start="700" data-line-end="701"><img src="assets/git/commit-message.jpg" alt="Commit message" title="Commit message"></p>
+<h3 class="code-line" data-line-start=702 data-line-end=703 ><a id="Log_options_702"></a>Log options</h3>
+<p class="has-line-data" data-line-start="704" data-line-end="705">You can limit the number of commits you see in the log.</p>
+<pre class="prettyprint">    git log -n1
+</pre>
+<p class="has-line-data" data-line-start="708" data-line-end="709">This limits to the latest commit.</p>
+<p class="has-line-data" data-line-start="710" data-line-end="711">To only see the first line of each commit.</p>
+<pre class="prettyprint">git log --oneline
+</pre>
+<p class="has-line-data" data-line-start="714" data-line-end="715">This will show you a one line message for each commit.</p>
+<h2 class="code-line" data-line-start=716 data-line-end=717 ><a id="Using_Git_in_a_real_project_716"></a>Using Git in a real project</h2>
+<p class="has-line-data" data-line-start="718" data-line-end="719">We are using Git for the Explore California website project. We open the directory in the directory structure where we keep our projects.</p>
+<p class="has-line-data" data-line-start="720" data-line-end="721">If you run <code>git status</code> in the directory you will get a message stating that the directory is not a Git repository. This means that if we want Git to track our files we need to initialise the directory.</p>
+<pre class="prettyprint">git init
+</pre>
+<p class="has-line-data" data-line-start="724" data-line-end="725">Now if you do an <code>ls -la</code> you will see that we have a <strong>.git</strong> directory in our directory. This shows us that Git has been added. If we do a <code>git status</code> now we will see that we have untracked files.</p>
+<p class="has-line-data" data-line-start="726" data-line-end="727">If you do a <code>git log</code> you will get an error because the HEAD is not pointed at anything meaning that we haven’t committed yet.</p>
+<p class="has-line-data" data-line-start="728" data-line-end="729">So now we do a commit.</p>
+<pre class="prettyprint">git commit -m &quot;Initial commit.&quot;
+</pre>
+<p class="has-line-data" data-line-start="732" data-line-end="733">This adds all of the files to our repository.</p>
+<pre class="prettyprint">git log
+</pre>
+<p class="has-line-data" data-line-start="736" data-line-end="737">Will show our first commit.</p>
+<p class="has-line-data" data-line-start="738" data-line-end="739">Note that each directory in your working directory that has a <strong>.git</strong> directory in it is a separate Git repository.</p>
+<h3 class="code-line" data-line-start=740 data-line-end=741 ><a id="Making_atomic_commits_740"></a>Making atomic commits</h3>
+<p class="has-line-data" data-line-start="742" data-line-end="743">These are small commits and are a best practice.</p>
+<ul>
+<li class="has-line-data" data-line-start="744" data-line-end="745">Only affect a single aspect.</li>
+<li class="has-line-data" data-line-start="745" data-line-end="747">Easier to understand when we work with them and to find bugs inside of them.</li>
+</ul>
+<p class="has-line-data" data-line-start="747" data-line-end="748">Makes it easier to work when you collaborate with other people.</p>
+<h2 class="code-line" data-line-start=749 data-line-end=750 ><a id="Undo_Changes_749"></a>Undo Changes</h2>
+<h3 class="code-line" data-line-start=751 data-line-end=752 ><a id="Undo_working_directory_changes_751"></a>Undo working directory changes</h3>
+<p class="has-line-data" data-line-start="753" data-line-end="754">In this case we are going to delete the navigation from the Index.html file. We have closed our text editor and saved file changes to the working directory.</p>
+<p class="has-line-data" data-line-start="755" data-line-end="756">We then realise that we didn’t really mean to make these changes and we can’t use the editor to undo the changes.</p>
+<p class="has-line-data" data-line-start="757" data-line-end="758">We still have a copy of the original file in Git’s repository so we can bring it back with the following command.</p>
+<pre class="prettyprint">git checkout -- index.html
+</pre>
+<p class="has-line-data" data-line-start="761" data-line-end="762">The double dash <strong>–</strong> is telling Git that we want to checkout from the current branch.</p>
+<p class="has-line-data" data-line-start="763" data-line-end="764">Once we do this it will return the copy of <em>index.html</em> from the repository and place it in or working directory.</p>
+<pre class="prettyprint">git status
+</pre>
+<p class="has-line-data" data-line-start="767" data-line-end="768">Tells us that there is nothing to do.</p>
+<p class="has-line-data" data-line-start="769" data-line-end="770">If you look at <em>index.html</em> you will see that it is back to its original state.</p>
+<h3 class="code-line" data-line-start=771 data-line-end=772 ><a id="Unstage_files_771"></a>Unstage files</h3>
+<p class="has-line-data" data-line-start="773" data-line-end="774">We will do a global search for $150 and replace that price with $175. This will do 11 changes across 10 files.</p>
+<p class="has-line-data" data-line-start="775" data-line-end="776"><code>git status</code> tells us that we have a number of files to update. We will only update the files in the tours directory.</p>
+<pre class="prettyprint">git add tours*
+</pre>
+<p class="has-line-data" data-line-start="779" data-line-end="780"><img src="assets/git/staging-status.jpg" alt="Staging status" title="Staging status"></p>
+<p class="has-line-data" data-line-start="781" data-line-end="782">Say we decide to unstage the tours files we can do this by</p>
+<pre class="prettyprint">git reset HEAD tours*
+</pre>
+<p class="has-line-data" data-line-start="785" data-line-end="786">This will remove the tours files from the staging tree.</p>
+<p class="has-line-data" data-line-start="787" data-line-end="788"><img src="assets/git/git-reset.jpg" alt="Reset the staging tree" title="Reset the staging tree"></p>
+<p class="has-line-data" data-line-start="789" data-line-end="790">Now let’s revert the files back to the way they were before we did the changes.</p>
+<pre class="prettyprint">git checkout -- .
+</pre>
+<p class="has-line-data" data-line-start="793" data-line-end="794"><code>git status</code> and a check of the files will tell us that we are back to the unchanged state.</p>
+<h3 class="code-line" data-line-start=795 data-line-end=796 ><a id="Amending_commits_795"></a>Amending commits</h3>
+<p class="has-line-data" data-line-start="797" data-line-end="798">We are going to amend commits that are already in the repository.</p>
+<p class="has-line-data" data-line-start="799" data-line-end="800">Remember that we can’t change any of the old commits without breaking the chain. There is one set of commits that we can change and that is the current (HEAD) commit.</p>
+<p class="has-line-data" data-line-start="801" data-line-end="802">We are going to change the resource.html file. Change the order of sunglasses and sunscreen. We will place them under hat. <code>git diff</code> will show us what has changed.</p>
+<pre class="prettyprint">git commit -am &quot;Changed items to bring.&quot;
+</pre>
+<p class="has-line-data" data-line-start="805" data-line-end="806"><code>git status</code> shows us there is nothing to do and <code>git diff -n1</code> shows us the current commit with the message “Changed items to bring.”.</p>
+<p class="has-line-data" data-line-start="807" data-line-end="808">Now we realise that we needed to shift insect repellant up with the other changes we made in the current commit. Let’s do this.</p>
+<p class="has-line-data" data-line-start="809" data-line-end="810"><code>git diff</code> shows us what has changed and we want to amend this to the previous (HEAD) commit.</p>
+<p class="has-line-data" data-line-start="811" data-line-end="812">first,</p>
+<pre class="prettyprint">git add resources.html
+</pre>
+<p class="has-line-data" data-line-start="815" data-line-end="816"><code>get status</code> will show us that it is now staged.</p>
+<p class="has-line-data" data-line-start="817" data-line-end="818">Do a <code>git log --oneline</code>.</p>
+<p class="has-line-data" data-line-start="819" data-line-end="820"><img src="assets/git/log1.jpg" alt="git log 1" title="git log 1"></p>
+<p class="has-line-data" data-line-start="822" data-line-end="823">If we want log1 to the previous commit.</p>
+<pre class="prettyprint">git commit --amend -m &quot;Reorder recommended items for trip.&quot;
+</pre>
+<p class="has-line-data" data-line-start="826" data-line-end="827">Now do another <code>git log --oneline</code>.</p>
+<p class="has-line-data" data-line-start="828" data-line-end="829"><img src="assets/git/log2.jpg" alt="git log 2" title="git log 2"></p>
+<p class="has-line-data" data-line-start="830" data-line-end="831">Notice that the comment in the previous commit has been changed to the new amended message. Also notice that the sha has changed because the files have been changed.</p>
+<p class="has-line-data" data-line-start="832" data-line-end="833">If we do a <code>git show</code>.</p>
+<pre class="prettyprint">git show 9c20b462a8da7834b9652ace8107848b64fd4423
+</pre>
+<p class="has-line-data" data-line-start="836" data-line-end="837">We can see that we have all of the changes.</p>
+<p class="has-line-data" data-line-start="838" data-line-end="839"><img src="assets/git/git-show.jpg" alt="git show" title="git show"></p>
+<p class="has-line-data" data-line-start="840" data-line-end="841">Now we have decided that we want to amend the message for the previous commit.</p>
+<pre class="prettyprint">git commit --amend -m &quot;Reorder recommended items for outdoor trip.&quot;
+</pre>
+<p class="has-line-data" data-line-start="844" data-line-end="845"><code>git log -n1</code> will show us that the message has been amended. Note also that the sha value changed even though all I changed was the message.</p>
+<h3 class="code-line" data-line-start=846 data-line-end=847 ><a id="Retrieve_old_versions_of_files_846"></a>Retrieve old versions of files</h3>
+<p class="has-line-data" data-line-start="848" data-line-end="849">Git only allows amending the most recent commit otherwise we wouldn’t be able to verify the chain of integrity.</p>
+<p class="has-line-data" data-line-start="850" data-line-end="851">Edits which undergo changes should be new commits.</p>
+<p class="has-line-data" data-line-start="852" data-line-end="853">It maybe helpful to retrieve an old version of a file.</p>
+<p class="has-line-data" data-line-start="854" data-line-end="855">We did a small change to the <em>index.html</em> file. Do a <code>git log -n1</code> to try and find the commit where we changed <em>index.html</em>.</p>
+<p class="has-line-data" data-line-start="856" data-line-end="857"><img src="assets/git/git-show.jpg" alt="git show" title="git show"></p>
+<p class="has-line-data" data-line-start="858" data-line-end="859">It has a sha value of 48cba47.</p>
+<pre class="prettyprint">git show 48cba47 --color-words
+</pre>
+<p class="has-line-data" data-line-start="862" data-line-end="863">Will show you where the change occurred but we really want the commit before that which has a sha value of 18b0d3e.</p>
+<p class="has-line-data" data-line-start="864" data-line-end="865">I want the <em>index.html</em> page from that commit.</p>
+<pre class="prettyprint">git checkout 18b0d3e -- index.html
+</pre>
+<p class="has-line-data" data-line-start="868" data-line-end="869"><code>git status</code> will show that file in the staging directory. So now I can do a,</p>
+<pre class="prettyprint">git diff --staged
+</pre>
+<p class="has-line-data" data-line-start="872" data-line-end="873"><img src="assets/git/change.jpg" alt="Show changes" title="Show changes"></p>
+<p class="has-line-data" data-line-start="874" data-line-end="875">The text in red (you’ll) is what was the old version and the green (you will) is what is in the staging file and the working directory so we have reverted back to the old version of the file.</p>
+<p class="has-line-data" data-line-start="876" data-line-end="877">Looking at the index page you will see that the text has reverted back to the original “you’ll” text.</p>
+<p class="has-line-data" data-line-start="878" data-line-end="879">do a <code>git diff --staged --color-words</code> and you will see that the change is in the staging directory.</p>
+<p class="has-line-data" data-line-start="880" data-line-end="881">Now we can commit that change and we will have both changes committed.</p>
+<pre class="prettyprint">git commit index.html -m &quot;Revert back to original text.&quot;
+</pre>
+<p class="has-line-data" data-line-start="884" data-line-end="885"><code>git log</code> will show that we have both commits.</p>
+<h3 class="code-line" data-line-start=886 data-line-end=887 ><a id="Revert_a_commit_886"></a>Revert a commit</h3>
+<p class="has-line-data" data-line-start="888" data-line-end="889">Reverting a commit is to just undo that commit.</p>
+<p class="has-line-data" data-line-start="890" data-line-end="891">We have decided that we were wrong to make the last change so we want to revert that change (revert the commit).</p>
+<p class="has-line-data" data-line-start="892" data-line-end="893">We can do this because the commit is the last commit and we won’t upset the chain if we change the last commit.</p>
+<p class="has-line-data" data-line-start="894" data-line-end="895">We are going to make a commit that reverses the last commit. There is an even easier way than the way we did it previously.</p>
+<p class="has-line-data" data-line-start="896" data-line-end="897">Do a <code>git log -n1</code> to get the sha value of the last commit. 5e3ad0f185cc</p>
+<p class="has-line-data" data-line-start="898" data-line-end="899">now revert by.</p>
+<pre class="prettyprint">git revert 5e3ad0f185cc
+</pre>
+<p class="has-line-data" data-line-start="902" data-line-end="903">This will open your editor with a message about reverting. You can add extra text if you want but if not jst save and close. Now check the logs again and you will see the latest commit has the message about reverting.</p>
+<p class="has-line-data" data-line-start="904" data-line-end="905"><img src="assets/git/revert.jpg" alt="Revert the previous commit" title="Revert the previous commit"></p>
+<p class="has-line-data" data-line-start="906" data-line-end="907">You will see the HEAD message,</p>
+<pre class="prettyprint">Revert &quot;Revert back to original text.&quot; 
+
+This reverts commit 5e3ad0f185cc422360de01c300e3b30bf87cab32.
+</pre>
+<p class="has-line-data" data-line-start="912" data-line-end="913">It tells you that you have reverted the previous commit and the sha value of the previous commit is there for reference.</p>
+<pre class="prettyprint">git show HEAD --color-words
+</pre>
+<p class="has-line-data" data-line-start="916" data-line-end="917">Will show you the latest changes and a quick look at the index page shows that you have reverted back to the original text.</p>
+<p class="has-line-data" data-line-start="918" data-line-end="919"><code>git show HEAD</code> is a good way to look at the latest commit changes.</p>
+<h3 class="code-line" data-line-start=920 data-line-end=921 ><a id="Removing_untracked_files_920"></a>Removing untracked files</h3>
+<p class="has-line-data" data-line-start="922" data-line-end="923">We occasionally have untracked files that we don’t really need in our project. There is an easy way to remove these using Git rather than deleting them manually.</p>
+<p class="has-line-data" data-line-start="924" data-line-end="925">Imaging we have three text files in our project - junk1.txt, junk2.txt and junk3.txt.</p>
+<p class="has-line-data" data-line-start="926" data-line-end="927"><code>git status</code> tells us that we have three untracked files ready to be added.</p>
+<pre class="prettyprint">git clean -n
+</pre>
+<p class="has-line-data" data-line-start="930" data-line-end="931">Warns us about what can be removed. This is a dry run, a safety net. The message we receive is.</p>
+<pre class="prettyprint">Would remove junk1.txt
+Would remove junk2.txt
+Would remove junk3.txt
+</pre>
+<p class="has-line-data" data-line-start="936" data-line-end="937">Let’s add <em>junk1.txt</em> to staging.</p>
+<pre class="prettyprint">git add junk1.txt
+</pre>
+<p class="has-line-data" data-line-start="940" data-line-end="941">Run <code>git clean -n</code> again and it tells us.</p>
+<pre class="prettyprint">Would remove junk2.txt
+Would remove junk3.txt
+</pre>
+<p class="has-line-data" data-line-start="945" data-line-end="946"><em>junk1.txt</em> is in the staging area so won’t be removed. It is only removing untracked files, not files in the staging tree or repository. It is only removing files in my working directory.</p>
+<pre class="prettyprint">git clean -f
+</pre>
+<p class="has-line-data" data-line-start="948" data-line-end="950">This is the message we receive.<br>
+<code>-f</code> is the force removal of items. It will totally remove these files. This is the message we receive.</p>
+<pre class="prettyprint">Removing junk2.txt
+Removing junk3.txt
+</pre>
+<p class="has-line-data" data-line-start="954" data-line-end="955">If I do a <code>git status</code> it will tell me that <em>junk1.txt</em> is in the staging tree.</p>
+<pre class="prettyprint">git reset HEAD junk1.txt
+</pre>
+<p class="has-line-data" data-line-start="958" data-line-end="959">Will remove it from the staging tree and then we can remove it by.</p>
+<pre class="prettyprint">git clean -f
+</pre>
+<p class="has-line-data" data-line-start="962" data-line-end="963">This will remove the file permanently and give us the message.</p>
+<pre class="prettyprint">Removing junk1.txt
+</pre>
+<p class="has-line-data" data-line-start="966" data-line-end="967">This is a destructive process so use with care. as a safety net run <code>git clean -n</code> before you run <code>git clean -f</code>.</p>
+<h2 class="code-line" data-line-start=968 data-line-end=969 ><a id="Ignore_files_968"></a>Ignore files</h2>
+<h3 class="code-line" data-line-start=970 data-line-end=971 ><a id="Use_gitignore_files_970"></a>Use .gitignore files</h3>
+<p class="has-line-data" data-line-start="972" data-line-end="973">Git does a great job of tracking files and noticing when they have changed but what if we don’t want to track particular files? What id they are temporary files or files we don’t want to track.</p>
+<p class="has-line-data" data-line-start="974" data-line-end="975">You can put a file in the root of your project named <strong>.gitignore</strong>. It contains:</p>
+<ul>
+<li class="has-line-data" data-line-start="976" data-line-end="977">List of rules to determine which files to ignore.</li>
+<li class="has-line-data" data-line-start="977" data-line-end="979">Changes made to ignored files will be ignored by Git.</li>
+</ul>
+<p class="has-line-data" data-line-start="979" data-line-end="980">We can put in a simple rule or we can use pattern matching (basic regular expressions).</p>
+<pre class="prettyprint">?*[aeiou][0-9]
+</pre>
+<p class="has-line-data" data-line-start="983" data-line-end="984">If we want to ignore all log files in the log directory</p>
+<pre class="prettyprint">logs/*.txt
+</pre>
+<p class="has-line-data" data-line-start="987" data-line-end="988">This ignores all <em>php</em> files but we don’t want to ignore <em>index.php</em>.</p>
+<pre class="prettyprint">*.php
+!index.php
+</pre>
+<p class="has-line-data" data-line-start="992" data-line-end="993">To ignore all files in a directory use the trailing slash.</p>
+<pre class="prettyprint">assets/videos/
+</pre>
+<p class="has-line-data" data-line-start="996" data-line-end="997">Would ignore all files in the videos directory.</p>
+<p class="has-line-data" data-line-start="998" data-line-end="999">You can put comments in a <code>.gitignore</code> file.</p>
+<pre class="prettyprint"># This is a comment
+</pre>
+<p class="has-line-data" data-line-start="1002" data-line-end="1003">Blank lines are skipped.</p>
+<p class="has-line-data" data-line-start="1004" data-line-end="1005">Imagine we have a log file in our directory named <em>access.log</em> and it keeps changing all the time. We wouldn’t want Git to track these changes.</p>
+<p class="has-line-data" data-line-start="1006" data-line-end="1007"><code>git status</code> tells us that there is a new file not being tracked.</p>
+<p class="has-line-data" data-line-start="1008" data-line-end="1009">Add another new file named <strong>.gitignore</strong> and add the line <em>access.log</em> to it.</p>
+<p class="has-line-data" data-line-start="1010" data-line-end="1011">Now if you do a <code>git status</code> it will tell you that there is only one untracked file named <em>.gitignore</em> and <em>access.log</em> is ignored.</p>
+<p class="has-line-data" data-line-start="1012" data-line-end="1013">Add these changes to <em>.gitignore</em></p>
+<pre class="prettyprint"># Demo example
+
+.DS_Store
+thumbs.db
+*.bak
+*.tmp
+*.zip
+*.rar
+*.log
+log/*.log
+log/*.log[0-9]
+assets/photoshop/
+assets/videos/
+!assets/videos/tours_*.mp4
+access.log
+</pre>
+<p class="has-line-data" data-line-start="1030" data-line-end="1031">Now commit the <em>.gitignore</em> file.</p>
+<pre class="prettyprint">git add .gitignore
+
+git commit -am &quot;Add .gitignore file.&quot;
+</pre>
+<p class="has-line-data" data-line-start="1036" data-line-end="1037">Github keep a set of gitignore files for projects like Visual Studio solutions. You can see these at:</p>
+<pre class="prettyprint">https://github.com/github/gitignore
+</pre>
+<h3 class="code-line" data-line-start=1040 data-line-end=1041 ><a id="Globally_ignore_files_1040"></a>Globally ignore files</h3>
+<p class="has-line-data" data-line-start="1042" data-line-end="1043">You can set a global gitignore file with any name. It is bes to save this in your user directory. We can create this by:</p>
+<pre class="prettyprint">git config --global core.excludesfile ~/.gitignore-global
+</pre>
+<p class="has-line-data" data-line-start="1046" data-line-end="1047">This will create a global gitignore file but I ended up having to create it in my Users/alanr directory manually.</p>
+<p class="has-line-data" data-line-start="1048" data-line-end="1049">You may want to put your gitignores in the project file for each project so that if somebody clones your project they can have the same set of gitignores as you.</p>
+<p class="has-line-data" data-line-start="1050" data-line-end="1051">If you don’t want to copy the same set of gitignores to each project then add them to a global gitignores file.</p>
+<p class="has-line-data" data-line-start="1052" data-line-end="1053">I have decided to just keep theobvious files in my global gitignores file.</p>
+<pre class="prettyprint">*.tmp
+*.bak
+thumbs.db
+*.log
+</pre>
+<h3 class="code-line" data-line-start=1059 data-line-end=1060 ><a id="Ignore_tracked_files_1059"></a>Ignore tracked files</h3>
+<p class="has-line-data" data-line-start="1061" data-line-end="1062">You can ignore files that aren’t being tracked but you can’t easily ignore files that are already being tracked.</p>
+<p class="has-line-data" data-line-start="1063" data-line-end="1064">We can tell Git to ignore files that we are already tracking with a bit of work.</p>
+<p class="has-line-data" data-line-start="1065" data-line-end="1066">Let’s create a fake db configuration file named <em>db_config.txt</em>. Add some database keys in it.</p>
+<p class="has-line-data" data-line-start="1067" data-line-end="1068">Do a <code>git status</code> and you will see a new untracked file.</p>
+<pre class="prettyprint">git add db_config.txt
+
+git commit -m &quot;Add database configuration file.&quot;
+</pre>
+<p class="has-line-data" data-line-start="1073" data-line-end="1074">Now we have committed the file so we are tracking it and any changes to it will be tracked.</p>
+<p class="has-line-data" data-line-start="1075" data-line-end="1076">Now let’s tell <em>.gitignore</em> to ignore **db_config.txt. Do a <code>git status</code> and you will see you have made changes to <em>.gitignore</em>.</p>
+<p class="has-line-data" data-line-start="1077" data-line-end="1078">Now make a change to <em>db_config.txt</em>.</p>
+<p class="has-line-data" data-line-start="1079" data-line-end="1080">Do a <code>git status</code> again and you will notice that it <strong>hasn’t</strong> ignored <em>db_config.txt</em> as we expected.</p>
+<p class="has-line-data" data-line-start="1081" data-line-end="1082">This is our problem. Git doesn’t ignore this file even though we asked it to ignore the file. Git seems to want to hold onto the file and keep on tracking it.</p>
+<p class="has-line-data" data-line-start="1083" data-line-end="1084">We could use the following command:</p>
+<pre class="prettyprint">git rm db_config.txt
+</pre>
+<p class="has-line-data" data-line-start="1087" data-line-end="1088">This would remove the file from our working directory and move it to the staging tree ready for us to commit and then the file would be gone. That would be one way to get rid of it but we don’t want to remove it from our working directory. What we want to do is remove it from our staging index. The way we can do this is to:</p>
+<pre class="prettyprint">git rm --cached db_config.txt
+</pre>
+<p class="has-line-data" data-line-start="1091" data-line-end="1092">Remember that <code>git diff --staged</code> or <code>git diff --cached</code> are the same. That is not the case with <code>rm</code>.</p>
+<p class="has-line-data" data-line-start="1093" data-line-end="1094">It gives us the message that it has:</p>
+<pre class="prettyprint">rm 'db_config.txt'
+</pre>
+<p class="has-line-data" data-line-start="1097" data-line-end="1098">If you look in the directory you will see the file <em>db_config.txt</em> and a <code>git status</code> gives us the following message.</p>
+<p class="has-line-data" data-line-start="1099" data-line-end="1100"><img src="assets/git/cached.jpg" alt="git rm --cached message" title="git rm --cached message"></p>
+<pre class="prettyprint">git diff --staged
+</pre>
+<p class="has-line-data" data-line-start="1103" data-line-end="1104">Tells us that the file is ready for deletion. It has deleted the <em>db_config.txt</em> file but it is still in our working directory.</p>
+<pre class="prettyprint">git add .gitignore
+</pre>
+<p class="has-line-data" data-line-start="1107" data-line-end="1108">So <code>git status</code> tells us that we have two files to be committed.</p>
+<pre class="prettyprint">git commit -m &quot;Stop tracking changes to db_config.txt&quot;
+</pre>
+<p class="has-line-data" data-line-start="1111" data-line-end="1112"><code>git status</code> tells us that there is nothing to be committed and our file is still there.</p>
+<p class="has-line-data" data-line-start="1113" data-line-end="1114">Now make a change to <em>db_config.txt</em>.</p>
+<p class="has-line-data" data-line-start="1115" data-line-end="1116">Do a <code>git status</code> and you see that it is not tracking the changes to <em>db_config.txt</em>.</p>
+<p class="has-line-data" data-line-start="1117" data-line-end="1118">Now our <em>.gitignore</em> is working. The file is still in our repository and if someone comes along and clones our project they will get the <em>db_config.txt</em> file in their project.</p>
+<h3 class="code-line" data-line-start=1119 data-line-end=1120 ><a id="Track_empty_directories_1119"></a>Track empty directories</h3>
+<p class="has-line-data" data-line-start="1121" data-line-end="1122">Git doesn’t track empty directories. We can prove this because there is an <em>explorers</em> directory in our project that is empty.</p>
+<pre class="prettyprint">git ls-tree HEAD
+</pre>
+<p class="has-line-data" data-line-start="1125" data-line-end="1126">This command will list all files/directories in the project directory at the time of the last commit.</p>
+<p class="has-line-data" data-line-start="1127" data-line-end="1129">It lists the <em>resources</em> directory because it has a <em>faq.html</em> file in it but ignores the <em>explorers</em> directory because there are no files in it. This proves that Git doesn’t track empty directories.<br>
+Do another test to prove this. Add a <em>temp</em> directory into our project.</p>
+<p class="has-line-data" data-line-start="1130" data-line-end="1131"><code>git status</code> tells us there are no commits so it doesn’t recognise this directory.</p>
+<p class="has-line-data" data-line-start="1132" data-line-end="1133">Git is a file tracking system so it tracks directories to get to files but ignores the directories with no files.</p>
+<p class="has-line-data" data-line-start="1134" data-line-end="1135">This is a problem because we want the <em>temp</em> directory to be a part of our project. It could be for future purposes and we want to be sure that anybody using our project has access to that directory.</p>
+<p class="has-line-data" data-line-start="1136" data-line-end="1137">There is a way around this by adding a <strong>.gitkeep</strong> empty file in the <em>temp</em> directory.</p>
+<p class="has-line-data" data-line-start="1138" data-line-end="1139">Add a <em>.gitkeep</em> empty file into our <em>explorers</em> directory.</p>
+<p class="has-line-data" data-line-start="1140" data-line-end="1141"><code>git status</code> tells us that <em>explorers/</em> is an untracked directory.</p>
+<pre class="prettyprint">git add explorers/
+</pre>
+<p class="has-line-data" data-line-start="1144" data-line-end="1145">Adds the file to the staging tree.</p>
+<p class="has-line-data" data-line-start="1146" data-line-end="1147"><code>git status</code> tells us that <em>explorers/.gitkeep</em> is in staging and ready to commit. At this state it wants to save the <em>.gitkeep</em> file.</p>
+<pre class="prettyprint">git commit -m &quot;Track explorers directory.&quot;
+</pre>
+<p class="has-line-data" data-line-start="1150" data-line-end="1151">Completes the process. Now if I make chages to <em>.gitkeep</em> it will track changes and if my project is cloned it will contain the <em>exlporers</em> directory.</p>
+<p class="has-line-data" data-line-start="1152" data-line-end="1153">If you want to create an empty file in a directory you can use the following command:</p>
+<pre class="prettyprint">touch temp/.gitkeep
+</pre>
+<h3 class="code-line" data-line-start=1157 data-line-end=1158 ><a id="Additional_Notes_1157"></a>Additional Notes</h3>
+<p class="has-line-data" data-line-start="1159" data-line-end="1160">I have also noticed an interesting Git command in Stackoverflow.</p>
+<pre class="prettyprint">git reflog
+</pre>
+<p class="has-line-data" data-line-start="1163" data-line-end="1164">Shows one line for each commit.</p>
+<pre class="prettyprint">git reflog -all
+</pre>
+<p class="has-line-data" data-line-start="1167" data-line-end="1168">Shows the HEAD information for each commit. Maybe a bit too much information.</p>
+<p class="has-line-data" data-line-start="1169" data-line-end="1170">You can also get a complete list of your bash history by using the following command.</p>
+<pre class="prettyprint">history &gt; alan.log
+</pre>
+<p class="has-line-data" data-line-start="1173" data-line-end="1174">This is a list of everything I have done in Git bash since I installed it.</p>
+<p class="has-line-data" data-line-start="1175" data-line-end="1176">The original file is kept in Users/alanr/.bash_history</p>
+                
+                
+
+
+
+            
+        </div><!-- starter-template -->
+    </div><!-- /.container -->
+   
+   
+   <!-- Bootstrap core JavaScript
+   ================================================== -->
+   <!-- Placed at the end of the document so the pages load faster -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"/>
+   <script>hljs.initHighlightingOnLoad();</script>
+
+   <script src="assets/js/jquery.min.js"></script>
+   <script src="assets/js/bootstrap.min.js"></script>
+</body>
+</html>
