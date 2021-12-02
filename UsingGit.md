@@ -1174,3 +1174,29 @@ You can also get a complete list of your bash history by using the following com
 This is a list of everything I have done in Git bash since I installed it.
 
 The original file is kept in Users/alanr/.bash_history
+
+## Git on Azure DevOps
+
+All of my Git repositories on Azure DevOps are private. This has never caused me any problems because I only usually keep repositories on my local PC.
+
+I am now storing code in my WSL Ubuntu file structure as well and wanted to clone a repository to Ubuntu. I had problems because it wanted my username and password. I added these but the authentication failed.
+
+It was an easy process to add authentication.
+
+I opened my repository on username.VisualStudio.com and click the ``clone`` button. I then click on **Generate Git Credentials** and this generates a password that I can use for cloning the repository.
+
+I can interrogate the repository with the following command.
+
+```bash
+	git config --list
+```
+
+If you want to interrogate a remote Github repository use this command.
+
+```bash
+	git remote show origin
+```
+
+I will also need the generated password to get this information.
+
+**Note:** If I want to ``push`` or ``pull`` commits to my Ubuntu file structure I have to use this generated password so it is vitally important that I don't lose this password.
