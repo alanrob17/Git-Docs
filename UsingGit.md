@@ -170,7 +170,7 @@ Keep each line to less than 72 characters.
 
 Write commit messages in present tense not past tense.
 
-"Fixes a bug" or "Fixed a bug" not "Fixed a bug".
+"Fixes a bug" or "Fix a bug" not "Fixed a bug".
 
 The change message describes *what is in* a change set.
 
