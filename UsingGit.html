@@ -833,10 +833,19 @@ Do another test to prove this. Add a <em>temp</em> directory into our project.</
 </pre>
 <p class="has-line-data" data-line-start="1173" data-line-end="1174">This is a list of everything I have done in Git bash since I installed it.</p>
 <p class="has-line-data" data-line-start="1175" data-line-end="1176">The original file is kept in Users/alanr/.bash_history</p>
-                
-                
-
-
+<h2 id="git-on-azure-devops">Git on Azure DevOps</h2>
+<p>All of my Git repositories on Azure DevOps are private. This has never caused me any problems because I only usually keep repositories on my local PC.</p>
+<p>I am now storing code in my WSL Ubuntu file structure as well and wanted to clone a repository to Ubuntu. I had problems because it wanted my username and password. I added these but the authentication failed.</p>
+<p>It was an easy process to add authentication.</p>
+<p>I opened my repository on username.VisualStudio.com and click the <code>clone</code> button. I then click on <strong>Generate Git Credentials</strong> and this generates a password that I can use for cloning the repository.</p>
+<p>I can interrogate the repository with the following command.</p>
+<pre class="prettyprint">	git config --list
+</pre>
+<p>If you want to interrogate a remote Github repository use this command.</p>
+<pre class="prettyprint">	git remote show origin
+</pre>
+<p>I will also need the generated password to get this information.</p>
+<p><strong>Note:</strong> If I want to <code>push</code> or <code>pull</code> commits to my Ubuntu file structure I have to use this generated password so it is vitally important that I don't lose this password.</p>
 
             
         </div><!-- starter-template -->
