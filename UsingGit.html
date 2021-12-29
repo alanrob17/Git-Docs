@@ -11,34 +11,38 @@
     <link href="assets/css/starter-template.css" rel="stylesheet">
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>
 	<style type="text/css">
-    html {
+html {
 	font-size: 90.0%;
-    }
-	h2 {
-		margin-top: 60px;
-	}
-	
-	h4, h3 {
-		padding-top: 40px!;		
-	}
-	
-	p {
-		font-size: 1.2em;
-	}
+}
 
-	h4 {
-		font-size: 1.4em;
-	}
-	
-	img, pre.prettyprint {
-		margin-top: 1.5em;
-		margin-bottom: 1.5em;
-    }
+h2 {
+	margin-top: 60px;
+}
 
-    h1, h2, h3, h4, h5, h6 {
-        color:#007bff;
-  
-    }
+h4, h3 {
+	padding-top: 40px!;		
+}
+
+p {
+	font-size: 1.2em;
+}
+h4 {
+	font-size: 1.4em;
+}
+
+img, pre.prettyprint {
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+h1, h2, h3, h4, h5, h6 {
+    color:#007bff;
+
+}
+blockquote {
+    border-left: 4px solid #999;
+    padding-left: 1rem;
+    page-break-inside: avoid;
+}
 	</style>
 </head>
 <body>
@@ -196,11 +200,10 @@
 </pre>
 <p>Will show me a list of commits made for each project with the newest entry at the top.</p>
 <blockquote>
-<p>commit 5e8ac3e4e470e43dc17ad181bca04183d6f805d6 (HEAD -&gt; master)		
-Author: Alan Robson <a href="mailto:alanr@live.com.au">alanr@live.com.au</a>		
-Date:   Sun Sep 22 12:43:54 2019 +1000</p>
-<pre><code>  Initial commit.
-</code></pre>
+commit 5e8ac3e4e470e43dc17ad181bca04183d6f805d6 (HEAD -&gt; master)<br/>
+Author: Alan Robson <a href="mailto:alanr@live.com.au">alanr@live.com.au</a><br/>
+Date:   Sun Sep 22 12:43:54 2019 +1000<br/>
+Initial commit.
 </blockquote>
 <p>Information in the message includes the sha value which is a unique key we can use to identify each commit. It shows me the author details and date of commit and gives me the message for the commit.</p>
 <p>There are some other options in the <em>git log</em> command.</p>
@@ -306,7 +309,7 @@ Date:   Sun Sep 22 12:43:54 2019 +1000</p>
 </pre>
 <p>After this all files in the local and remote repositories are in the same state. Run a <code>git status</code> and you should receive this message.</p>
 <blockquote>
-<p>On branch master		
+<p>On branch master<br/>	
 Your branch is up to date with 'origin/master'.</p>
 <p>nothing to commit, working tree clean</p>
 </blockquote>
@@ -351,17 +354,16 @@ Your branch is up to date with 'origin/master'.</p>
 <p>cat .git/HEAD		
 ref: refs/heads/master</p>
 </blockquote>
-<p>This is telling us that we can find this information in the refs directory.</p>
+<p>This is telling us that we can find this information in the refs director</p>
 <blockquote>
-<p>cat .git/refs/heads/master		
-938a47605721089babf0b4dfd7890fae7b91ac29</p>
+<p>cat .git/refs/heads/master 938a47605721089babf0b4dfd7890fae7b91ac29</p>
 </blockquote>
 <blockquote>
 <p>git log		
-commit 938a47605721089babf0b4dfd7890fae7b91ac29 (HEAD -&gt; master, origin/master)		
-Author: Alan Robson <a href="mailto:alanr@live.com.au">alanr@live.com.au</a>		
-Date:   Sun Sep 22 17:31:59 2019 +1000</p>
-<p>Added more workflow notes.</p>
+commit 938a47605721089babf0b4dfd7890fae7b91ac29 (HEAD -&gt; master, origin/master)<br/>		
+Author: Alan Robson <a href="mailto:alanr@live.com.au">alanr@live.com.au</a><br/>
+Date:   Sun Sep 22 17:31:59 2019 +1000<br/>
+Added more workflow notes.</p>
 </blockquote>
 <p>Note that <code>git log</code> will shows the commits and the latest sha value is the same as the one in <code>.git/refs/heads/master</code></p>
 <p>The log also tells us that the sha value is the HEAD -&gt; master.</p>
@@ -388,9 +390,9 @@ Date:   Sun Sep 22 17:31:59 2019 +1000</p>
 <pre class="prettyprint">	git diff
 </pre>
 <blockquote>
-<p>diff --git a/UsingGit.md b/UsingGit.md		
-index dc92054..6e7d904 100644		
---- a/UsingGit.md		
+<p>diff --git a/UsingGit.md b/UsingGit.md<br/>
+index dc92054..6e7d904 100644<br/>
+--- a/UsingGit.md<br/>
 +++ b/UsingGit.md</p>
 </blockquote>
 <p>File <strong>a</strong> is in my repository and file <strong>b</strong> is in my working directory. The list has a number of <code>+</code> lines which have been added to my working file. They are also coloured green.</p>
@@ -415,9 +417,9 @@ index dc92054..6e7d904 100644
 <p>The first technique is to just delete the file from the directory. We will delete file 1.</p>
 <p><code>git status</code> will give you the message.</p>
 <blockquote>
-<p>Changes not staged for commit:		
-(use &quot;git add/rm <file>...&quot; to update what will be committed)		
-(use &quot;git restore <file>...&quot; to discard changes in working directory)		
+<p>Changes not staged for commit:<br/>	
+(use &quot;git add/rm <file>...&quot; to update what will be committed)<br/>
+(use &quot;git restore <file>...&quot; to discard changes in working directory)<br/>
 deleted:    file-delete1.txt</p>
 </blockquote>
 <p>It tells you that you have deleted a file.</p>
@@ -430,8 +432,8 @@ deleted:    file-delete1.txt</p>
 </blockquote>
 <p><code>git status</code> tells us that the file is now in the staging area.</p>
 <blockquote>
-<p>Changes to be committed:		
-(use &quot;git restore --staged <file>...&quot; to unstage)		
+<p>Changes to be committed:<br/>	
+(use &quot;git restore --staged <file>...&quot; to unstage)<br/>
 deleted:    file-delete1.txt</p>
 </blockquote>
 <p>Now to get rid of it from staging.</p>
@@ -439,9 +441,9 @@ deleted:    file-delete1.txt</p>
 </pre>
 <p>You get this message.</p>
 <blockquote>
-<p>git commit -m &quot;Delete first file.&quot;		
-[master 6f42ee0] Delete first file.		
-1 file changed, 1 deletion(-)		
+<p>git commit -m &quot;Delete first file.&quot;<br/>
+[master 6f42ee0] Delete first file.<br/>
+1 file changed, 1 deletion(-)<br/>
 delete mode 100644 file-delete1.txt</p>
 </blockquote>
 <p>The second technique to remove a file is to tell Git to remove it.</p>
@@ -473,7 +475,6 @@ delete mode 100644 file-delete1.txt</p>
 <p><img src="assets/git/rename-second-file.jpg" alt="Rename second file" title="Rename second file"></p>
 <p>The second technique is a little more efficient.</p>
 <p>Now we can add a new directory into our project and then move a file from the root into the new directory.</p>
-<p><img src="assets/git/new-directory.jpg" alt="New directory" title="New directory"></p>
 <p>The file will be flagged as deleted and the new directory will be flagged as a new file that is untracked.</p>
 <p>Now in the directory shift the file back into the root and run this command.</p>
 <pre class="prettyprint">	git mv third_file.txt first_directory/third_file.txt
@@ -669,8 +670,8 @@ delete mode 100644 file-delete1.txt</p>
 </pre>
 <p>Warns us about what can be removed. This is a dry run, a safety net. The message we receive is.</p>
 <blockquote>
-<p>Would remove junk1.txt		
-Would remove junk2.txt		
+<p>Would remove junk1.txt<br/>
+Would remove junk2.txt<br/>
 Would remove junk3.txt</p>
 </blockquote>
 <p>Let's add <em>junk1.txt</em> to staging.</p>
@@ -678,7 +679,7 @@ Would remove junk3.txt</p>
 </pre>
 <p>Run <code>git clean -n</code> again and it tells us.</p>
 <blockquote>
-<p>Would remove junk2.txt		
+<p>Would remove junk2.txt<br/>
 Would remove junk3.txt</p>
 </blockquote>
 <p><em>junk1.txt</em> is in the staging area so won't be removed. It is only removing untracked files, not files in the staging tree or repository. It is only removing files in my working directory.</p>
@@ -687,7 +688,7 @@ Would remove junk3.txt</p>
 <p>This is the message we receive.
 <code>-f</code> is the force removal of items. It will totally remove these files. This is the message we receive.</p>
 <blockquote>
-<p>Removing junk2.txt		
+<p>Removing junk2.txt<br/>
 Removing junk3.txt</p>
 </blockquote>
 <p>If I do a <code>git status</code> it will tell me that <em>junk1.txt</em> is in the staging tree.</p>
@@ -871,3 +872,4 @@ Do another test to prove this. Add a <em>temp</em> directory into our project.</
 <script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>
+

@@ -11,7 +11,7 @@ Check the version of Git you are currently using.
 ```bash
 	git update-git-for-windows
 ```
-	
+
 Git changes the path to add the following variables.
 
 ```bash
@@ -232,8 +232,9 @@ Will show me a list of commits made for each project with the newest entry at th
 > commit 5e8ac3e4e470e43dc17ad181bca04183d6f805d6 (HEAD -> master)		
 > Author: Alan Robson <alanr@live.com.au>		
 > Date:   Sun Sep 22 12:43:54 2019 +1000		
->		
->		Initial commit.
+> 		
+> 		Initial commit.		
+>
 
 Information in the message includes the sha value which is a unique key we can use to identify each commit. It shows me the author details and date of commit and gives me the message for the commit.
 
@@ -443,7 +444,7 @@ After this all files in the local and remote repositories are in the same state.
 
 > On branch master		
 > Your branch is up to date with 'origin/master'.		
->		
+> 		
 > nothing to commit, working tree clean
 
 ### Hash values (SHA-1)
@@ -513,11 +514,10 @@ You will see that there is a file named HEAD.
 > cat .git/HEAD		
 > 	ref: refs/heads/master
 
-This is telling us that we can find this information in the refs directory.
+This is telling us that we can find this information in the refs director
 
 > cat .git/refs/heads/master		
 > 938a47605721089babf0b4dfd7890fae7b91ac29
-
 
 > git log		
 > commit 938a47605721089babf0b4dfd7890fae7b91ac29 (HEAD -> master, origin/master)		
@@ -577,7 +577,7 @@ This allows us to see changes in our working directory.
 > diff --git a/UsingGit.md b/UsingGit.md		
 > index dc92054..6e7d904 100644		
 > --- a/UsingGit.md		
-> +++ b/UsingGit.md		
+> +++ b/UsingGit.md
 
 File **a** is in my repository and file **b** is in my working directory. The list has a number of ``+`` lines which have been added to my working file. They are also coloured green.
 
@@ -621,9 +621,9 @@ The first technique is to just delete the file from the directory. We will delet
 
 ``git status`` will give you the message.
 
-> Changes not staged for commit:		
->  (use "git add/rm <file>..." to update what will be committed)		
->  (use "git restore <file>..." to discard changes in working directory)		
+> Changes not staged for commit:	
+>  (use "git add/rm <file>..." to update what will be committed)	
+>  (use "git restore <file>..." to discard changes in working directory)	
 >        deleted:    file-delete1.txt
 
 It tells you that you have deleted a file.
@@ -654,7 +654,7 @@ You get this message.
 
 > git commit -m "Delete first file."		
 > [master 6f42ee0] Delete first file.		
->	1 file changed, 1 deletion(-)		
+> 	1 file changed, 1 deletion(-)		
 >   delete mode 100644 file-delete1.txt
 
 The second technique to remove a file is to tell Git to remove it.
@@ -713,8 +713,6 @@ The file name has been changed in our directory and ``git status`` tells us that
 The second technique is a little more efficient.
 
 Now we can add a new directory into our project and then move a file from the root into the new directory.
-
-![New directory](assets/git/new-directory.jpg "New directory")
 
 The file will be flagged as deleted and the new directory will be flagged as a new file that is untracked.
 
@@ -1106,7 +1104,7 @@ Run ``git clean -n`` again and it tells us.
  This is the message we receive.
 ``-f`` is the force removal of items. It will totally remove these files. This is the message we receive.
 
-> Removing junk2.txt		
+> Removing junk2.txt
 > Removing junk3.txt
 
 If I do a ``git status`` it will tell me that *junk1.txt* is in the staging tree.
