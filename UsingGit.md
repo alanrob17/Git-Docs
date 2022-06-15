@@ -1407,3 +1407,169 @@ I will also need the generated password to get this information.
 **Note:** If I want to ``push`` or ``pull`` commits to my Ubuntu file structure I have to use this generated password so it is vitally important that I don't lose this password.
 
 ## Advanced Git
+
+Sometimes you will make a bad commit and will need to roll back. Some of these commands will change the Git history and some will not.
+
+```bash
+	git branch
+```
+
+> * master
+
+### Create a new branch
+
+```bash
+	git checkout -b feature
+```
+
+The **-b** option will create and switch you to the **feature** branch. Check your branch again.
+
+```bash
+	git branch
+```
+
+> * feature		
+>   main
+
+Now you see that you are on branch **feature**.
+
+### Switch back to main branch
+
+```bash
+	git checkout main
+```
+
+> feature		
+>
+> * main
+
+Will send you back to the **main** branch.
+
+### Removing code that you have added to a file
+
+You have added some code to a file.
+
+```bash
+	git status
+```
+
+> On branch main		
+> Changes not staged for commit:		
+>   (use "git add <file>..." to update what will be committed)		
+>   (use "git restore <file>..." to discard changes in working directory)		
+>         modified:   test.js		
+> 		
+> no changes added to commit (use "git add" and/or "git commit -a")
+
+Now, do a **diff**.
+
+```bash
+	git diff
+```
+
+Returns.
+
+> diff --git a/test.js b/test.js		
+> index 0f2c435..3b7e699 100644		
+> --- a/test.js		
+> +++ b/test.js		
+> @@ -21,3 +21,10 @@ let yearsUntilRetirement = (year, firstName) => {		
+>  yearsUntilRetirement(yearBorn, firstName);		
+>  		
+>  yearsUntilRetirement(1952, 'Alan');		
+> +		
+> +let addNumbers = (a, b) => {		
+>
+> * return a + b;		
+> +}		
+>
+> *		
+> +let total = addNumbers(7, 12);		
+> +console.log(total)
+
+Now I have decided I don't want to keep this code and I want to revert to my previous code.
+
+```bash
+	git checkout test.js
+```
+
+Returns.
+
+> Updated 1 path from the index
+
+Now, check the status
+
+```bash
+	git status
+```
+
+Returns.
+
+> On branch main		
+> nothing to commit, working tree clean
+
+If you now go back to you **test.js** file you will see that the new code has disappeared.
+
+### Reversing a faulty Git commit comment
+
+I am going to change the ``yearsUntilRetirement()`` function by changing the retirement age from 65 to 67.
+
+When I commit I accidentally name the function as ``calculateAge()``.
+
+```bash
+	git add *
+
+	git commit -m "Updated calculateAge function."
+
+	git log
+```
+
+Returns.
+
+> commit c42282c6889ad5311a1892222fe0d5d1a2c0d806 (HEAD -> main)		
+> Author: Alan Robson <alanr@live.com.au>		
+> Date:   Wed Jun 15 17:29:53 2022 +1000		
+> 		
+>     Updated calculateAge function.
+
+We now realise that we have named the wrong function in the commit message.
+
+How do we change this message without adding another commit?
+
+```bash
+	git commit --amend -m "Updated yearsUntilRetirement() function."
+```
+
+Returns.
+
+> [main 848aa1d] Updated yearsUntilRetirement() function.		
+>  Date: Wed Jun 15 17:29:53 2022 +1000		
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+
+Now do a ``log``.
+
+```bash
+	git log
+```
+
+Returns.
+
+> commit 848aa1df9301323df6fa0e5a05bd71b4795ad8a0 (HEAD -> main)		
+> Author: Alan Robson <alanr@live.com.au>		
+> Date:   Wed Jun 15 17:29:53 2022 +1000		
+> 		
+>     Updated yearsUntilRetirement() function.
+
+You can see the correct function name.
+
+**Note:**
+
+**This is important.** This command changes the git **history**. You can see that the SHA hash value has changed between the two commits. You should only do this when you are working locally and nobody on your team has seen the initial commit. If we push the changes and other people see the changes that it will cause problems in their repositories.
+
+We only want to change the history when we are the only ones that have access to the changes we have made.
+
+Later we will look at ways that we can make changes without changing the history.
+
+If you are the only one working on this file then changing the commit message will clean up your commit messages and that is a good thing.
+
+Time 5.50.

@@ -1048,7 +1048,7 @@ Removing junk3.txt</p>
 	git commit -am <span class="hljs-string">"Add .gitignore file."</span>
 </div></code></pre>
 <p>Github keep a set of gitignore files for projects like Visual Studio solutions. You can see these at:</p>
-<p>https://github.com/github/gitignore</p>
+<p><a href="https://github.com/github/gitignore">https://github.com/github/gitignore</a></p>
 <h3 id="globally-ignore-files">Globally ignore files</h3>
 <p>You can set a global gitignore file with any name. It is bes to save this in your user directory. We can create this by:</p>
 <pre class="hljs"><code><div>	git config --global core.excludesfile ~/.gitignore-global
@@ -1149,6 +1149,135 @@ Do another test to prove this. Add a <em>temp</em> directory into our project.</
 </div></code></pre>
 <p>I will also need the generated password to get this information.</p>
 <p><strong>Note:</strong> If I want to <code>push</code> or <code>pull</code> commits to my Ubuntu file structure I have to use this generated password so it is vitally important that I don't lose this password.</p>
+<h2 id="advanced-git">Advanced Git</h2>
+<p>Sometimes you will make a bad commit and will need to roll back. Some of these commands will change the Git history and some will not.</p>
+<pre class="hljs"><code><div>	git branch
+</div></code></pre>
+<blockquote>
+<ul>
+<li>master</li>
+</ul>
+</blockquote>
+<h3 id="create-a-new-branch">Create a new branch</h3>
+<pre class="hljs"><code><div>	git checkout -b feature
+</div></code></pre>
+<p>The <strong>-b</strong> option will create and switch you to the <strong>feature</strong> branch. Check your branch again.</p>
+<pre class="hljs"><code><div>	git branch
+</div></code></pre>
+<blockquote>
+<ul>
+<li>feature		
+main</li>
+</ul>
+</blockquote>
+<p>Now you see that you are on branch <strong>feature</strong>.</p>
+<h3 id="switch-back-to-main-branch">Switch back to main branch</h3>
+<pre class="hljs"><code><div>	git checkout main
+</div></code></pre>
+<blockquote>
+<p>feature</p>
+<ul>
+<li>main</li>
+</ul>
+</blockquote>
+<p>Will send you back to the <strong>main</strong> branch.</p>
+<h3 id="removing-code-that-you-have-added-to-a-file">Removing code that you have added to a file</h3>
+<p>You have added some code to a file.</p>
+<pre class="hljs"><code><div>	git status
+</div></code></pre>
+<blockquote>
+<p>On branch main		
+Changes not staged for commit:		
+(use &quot;git add <file>...&quot; to update what will be committed)		
+(use &quot;git restore <file>...&quot; to discard changes in working directory)		
+modified:   test.js</p>
+<p>no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</p>
+</blockquote>
+<p>Now, do a <strong>diff</strong>.</p>
+<pre class="hljs"><code><div>	git diff
+</div></code></pre>
+<p>Returns.</p>
+<blockquote>
+<p>diff --git a/test.js b/test.js		
+index 0f2c435..3b7e699 100644		
+--- a/test.js		
++++ b/test.js		
+@@ -21,3 +21,10 @@ let yearsUntilRetirement = (year, firstName) =&gt; {		
+yearsUntilRetirement(yearBorn, firstName);</p>
+<p>yearsUntilRetirement(1952, 'Alan');		
++		
++let addNumbers = (a, b) =&gt; {</p>
+<ul>
+<li>
+<p>return a + b;		
++}</p>
+</li>
+<li></li>
+</ul>
+<p>+let total = addNumbers(7, 12);		
++console.log(total)</p>
+</blockquote>
+<p>Now I have decided I don't want to keep this code and I want to revert to my previous code.</p>
+<pre class="hljs"><code><div>	git checkout test.js
+</div></code></pre>
+<p>Returns.</p>
+<blockquote>
+<p>Updated 1 path from the index</p>
+</blockquote>
+<p>Now, check the status</p>
+<pre class="hljs"><code><div>	git status
+</div></code></pre>
+<p>Returns.</p>
+<blockquote>
+<p>On branch main		
+nothing to commit, working tree clean</p>
+</blockquote>
+<p>If you now go back to you <strong>test.js</strong> file you will see that the new code has disappeared.</p>
+<h3 id="reversing-a-faulty-git-commit-comment">Reversing a faulty Git commit comment</h3>
+<p>I am going to change the <code>yearsUntilRetirement()</code> function by changing the retirement age from 65 to 67.</p>
+<p>When I commit I accidentally name the function as <code>calculateAge()</code>.</p>
+<pre class="hljs"><code><div>	git add *
+
+	git commit -m <span class="hljs-string">"Updated calculateAge function."</span>
+
+	git <span class="hljs-built_in">log</span>
+</div></code></pre>
+<p>Returns.</p>
+<blockquote>
+<p>commit c42282c6889ad5311a1892222fe0d5d1a2c0d806 (HEAD -&gt; main)		
+Author: Alan Robson <a href="mailto:alanr@live.com.au">alanr@live.com.au</a>		
+Date:   Wed Jun 15 17:29:53 2022 +1000</p>
+<pre><code>Updated calculateAge function.
+</code></pre>
+</blockquote>
+<p>We now realise that we have named the wrong function in the commit message.</p>
+<p>How do we change this message without adding another commit?</p>
+<pre class="hljs"><code><div>	git commit --amend -m <span class="hljs-string">"Updated yearsUntilRetirement() function."</span>
+</div></code></pre>
+<p>Returns.</p>
+<blockquote>
+<p>[main 848aa1d] Updated yearsUntilRetirement() function.		
+Date: Wed Jun 15 17:29:53 2022 +1000		
+1 file changed, 1 insertion(+), 1 deletion(-)</p>
+</blockquote>
+<p>Now do a <code>log</code>.</p>
+<pre class="hljs"><code><div>	git <span class="hljs-built_in">log</span>
+</div></code></pre>
+<p>Returns.</p>
+<blockquote>
+<p>commit 848aa1df9301323df6fa0e5a05bd71b4795ad8a0 (HEAD -&gt; main)		
+Author: Alan Robson <a href="mailto:alanr@live.com.au">alanr@live.com.au</a>		
+Date:   Wed Jun 15 17:29:53 2022 +1000</p>
+<pre><code>Updated yearsUntilRetirement() function.
+</code></pre>
+</blockquote>
+<p>You can see the correct function name.</p>
+<p><strong>Note:</strong></p>
+<p><strong>This is important.</strong> This command changes the git <strong>history</strong>. You can see that the SHA hash value has changed between the two commits. You should only do this when you are working locally and nobody on your team has seen the initial commit. If we push the changes and other people see the changes that it will cause problems in their repositories.</p>
+<p>We only want to change the history when we are the only ones that have access to the changes we have made.</p>
+<p>Later we will look at ways that we can make changes without changing the history.</p>
+<p>If you are the only one working on this file then changing the commit message will clean up your commit messages and that is a good thing.</p>
+<p>Time 5.50.</p>
 
 </body>
 </html>
