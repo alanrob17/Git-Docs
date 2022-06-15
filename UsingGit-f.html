@@ -1,430 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>UsingGit.md</title>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Using Git</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
 
-<style>
-/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-body {
-	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
-	font-size: var(--vscode-markdown-font-size, 14px);
-	padding: 0 26px;
-	line-height: var(--vscode-markdown-line-height, 22px);
-	word-wrap: break-word;
+    <!-- Custom styles for this template -->
+    <link href="assets/css/starter-template.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>
+	<style type="text/css">
+html {
+	font-size: 90.0%;
 }
 
-#code-csp-warning {
-	position: fixed;
-	top: 0;
-	right: 0;
-	color: white;
-	margin: 16px;
-	text-align: center;
-	font-size: 12px;
-	font-family: sans-serif;
-	background-color:#444444;
-	cursor: pointer;
-	padding: 6px;
-	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+h2 {
+	margin-top: 60px;
 }
 
-#code-csp-warning:hover {
-	text-decoration: none;
-	background-color:#007acc;
-	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+h4, h3 {
+	padding-top: 40px!;		
 }
 
-body.scrollBeyondLastLine {
-	margin-bottom: calc(100vh - 22px);
+p {
+	font-size: 1.2em;
+}
+h4 {
+	font-size: 1.4em;
 }
 
-body.showEditorSelection .code-line {
-	position: relative;
+img, pre.prettyprint {
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
 }
+h1, h2, h3, h4, h5, h6 {
+    color:#007bff;
 
-body.showEditorSelection .code-active-line:before,
-body.showEditorSelection .code-line:hover:before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: -12px;
-	height: 100%;
 }
-
-body.showEditorSelection li.code-active-line:before,
-body.showEditorSelection li.code-line:hover:before {
-	left: -30px;
-}
-
-.vscode-light.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.15);
-}
-
-.vscode-light.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.40);
-}
-
-.vscode-light.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-dark.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.4);
-}
-
-.vscode-dark.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.60);
-}
-
-.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-high-contrast.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 160, 0, 0.7);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 160, 0, 1);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-img {
-	max-width: 100%;
-	max-height: 100%;
-}
-
-a {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:focus,
-input:focus,
-select:focus,
-textarea:focus {
-	outline: 1px solid -webkit-focus-ring-color;
-	outline-offset: -1px;
-}
-
-hr {
-	border: 0;
-	height: 2px;
-	border-bottom: 2px solid;
-}
-
-h1 {
-	padding-bottom: 0.3em;
-	line-height: 1.2;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-}
-
-h1, h2, h3 {
-	font-weight: normal;
-}
-
-table {
-	border-collapse: collapse;
-}
-
-table > thead > tr > th {
-	text-align: left;
-	border-bottom: 1px solid;
-}
-
-table > thead > tr > th,
-table > thead > tr > td,
-table > tbody > tr > th,
-table > tbody > tr > td {
-	padding: 5px 10px;
-}
-
-table > tbody > tr + tr > td {
-	border-top: 1px solid;
-}
-
 blockquote {
-	margin: 0 7px 0 5px;
-	padding: 0 16px 0 10px;
-	border-left-width: 5px;
-	border-left-style: solid;
+    border-left: 4px solid #999;
+    padding-left: 1rem;
+    page-break-inside: avoid;
 }
-
-code {
-	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
-	font-size: 1em;
-	line-height: 1.357em;
-}
-
-body.wordWrap pre {
-	white-space: pre-wrap;
-}
-
-pre:not(.hljs),
-pre.hljs code > div {
-	padding: 16px;
-	border-radius: 3px;
-	overflow: auto;
-}
-
-pre code {
-	color: var(--vscode-editor-foreground);
-	tab-size: 4;
-}
-
-/** Theming */
-
-.vscode-light pre {
-	background-color: rgba(220, 220, 220, 0.4);
-}
-
-.vscode-dark pre {
-	background-color: rgba(10, 10, 10, 0.4);
-}
-
-.vscode-high-contrast pre {
-	background-color: rgb(0, 0, 0);
-}
-
-.vscode-high-contrast h1 {
-	border-color: rgb(0, 0, 0);
-}
-
-.vscode-light table > thead > tr > th {
-	border-color: rgba(0, 0, 0, 0.69);
-}
-
-.vscode-dark table > thead > tr > th {
-	border-color: rgba(255, 255, 255, 0.69);
-}
-
-.vscode-light h1,
-.vscode-light hr,
-.vscode-light table > tbody > tr + tr > td {
-	border-color: rgba(0, 0, 0, 0.18);
-}
-
-.vscode-dark h1,
-.vscode-dark hr,
-.vscode-dark table > tbody > tr + tr > td {
-	border-color: rgba(255, 255, 255, 0.18);
-}
-
-</style>
-
-<style>
-/* Tomorrow Theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-/* Original theme - https://github.com/chriskempson/tomorrow-theme */
-
-/* Tomorrow Comment */
-.hljs-comment,
-.hljs-quote {
-	color: #8e908c;
-}
-
-/* Tomorrow Red */
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-	color: #c82829;
-}
-
-/* Tomorrow Orange */
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-	color: #f5871f;
-}
-
-/* Tomorrow Yellow */
-.hljs-attribute {
-	color: #eab700;
-}
-
-/* Tomorrow Green */
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-	color: #718c00;
-}
-
-/* Tomorrow Blue */
-.hljs-title,
-.hljs-section {
-	color: #4271ae;
-}
-
-/* Tomorrow Purple */
-.hljs-keyword,
-.hljs-selector-tag {
-	color: #8959a8;
-}
-
-.hljs {
-	display: block;
-	overflow-x: auto;
-	color: #4d4d4c;
-	padding: 0.5em;
-}
-
-.hljs-emphasis {
-	font-style: italic;
-}
-
-.hljs-strong {
-	font-weight: bold;
-}
-</style>
-
-<style>
-/*
- * Markdown PDF CSS
- */
-
- body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
-	padding: 0 12px;
-}
-
-pre {
-	background-color: #f8f8f8;
-	border: 1px solid #cccccc;
-	border-radius: 3px;
-	overflow-x: auto;
-	white-space: pre-wrap;
-	overflow-wrap: break-word;
-}
-
-pre:not(.hljs) {
-	padding: 23px;
-	line-height: 19px;
-}
-
-blockquote {
-	background: rgba(127, 127, 127, 0.1);
-	border-color: rgba(0, 122, 204, 0.5);
-}
-
-.emoji {
-	height: 1.4em;
-}
-
-code {
-	font-size: 14px;
-	line-height: 19px;
-}
-
-/* for inline code */
-:not(pre):not(.hljs) > code {
-	color: #C9AE75; /* Change the old color so it seems less like an error */
-	font-size: inherit;
-}
-
-/* Page Break : use <div class="page"/> to insert page break
--------------------------------------------------------- */
-.page {
-	page-break-after: always;
-}
-
-</style>
-
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+	</style>
 </head>
 <body>
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-          ? 'dark'
-          : 'default'
-    });
-  </script>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="#">Using Git</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Notes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="starter-template">
+
 <h1 id="using-git">Using Git</h1>
 <p>Check the version of Git you are currently using.</p>
-<pre class="hljs"><code><div>	git --version
-</div></code></pre>
+<pre class="prettyprint">	git --version
+</pre>
 <h2 id="update-git">Update Git</h2>
-<pre class="hljs"><code><div>	git update-git-for-windows
-</div></code></pre>
+<pre class="prettyprint">	git update-git-for-windows
+</pre>
 <p>Git changes the path to add the following variables.</p>
-<pre class="hljs"><code><div>	C:\Program Files\Git\cmd;
+<pre class="prettyprint">	C:\Program Files\Git\cmd;
 
 	C:\Program Files\Git\mingw64\bin;
 
 	C:\Program Files\Git\usr\bin;
-</div></code></pre>
+</pre>
 <p>Git creates a  config file in your users directory. Mine is C:\Users\alanr</p>
-<pre class="hljs"><code><div>	cat .gitconfig
-</div></code></pre>
+<pre class="prettyprint">	cat .gitconfig
+</pre>
 <p>.</p>
-<pre class="hljs"><code><div>	[user]
+<pre class="prettyprint">	[user]
         name = Alan Robson
         email = alanr@live.com.au
-</div></code></pre>
+</pre>
 <p>You can also have a project level configuration file.</p>
-<pre class="hljs"><code><div>	my_project/.git/config
-</div></code></pre>
+<pre class="prettyprint">	my_project/.git/config
+</pre>
 <p>You can make configuration changes on the following levels.</p>
 <h4 id="system">System</h4>
-<pre class="hljs"><code><div>	git config --system
-</div></code></pre>
+<pre class="prettyprint">	git config --system
+</pre>
 <h4 id="user">User</h4>
-<pre class="hljs"><code><div>	git config --global
-</div></code></pre>
+<pre class="prettyprint">	git config --global
+</pre>
 <h4 id="project">Project</h4>
-<pre class="hljs"><code><div>	git config
-</div></code></pre>
+<pre class="prettyprint">	git config
+</pre>
 <h3 id="changing-settings">Changing settings</h3>
 <p>You can change settings with the following commands.</p>
-<pre class="hljs"><code><div>	git config --global user.name <span class="hljs-string">"Alan Robson"</span>
+<pre class="prettyprint">	git config --global user.name <span class="hljs-string">"Alan Robson"</span>
 
 	git config --global user.email <span class="hljs-string">"alanr@live.com.au"</span>
-</div></code></pre>
+</pre>
 <p>Check your configuration.</p>
-<pre class="hljs"><code><div>	git config --list
-</div></code></pre>
+<pre class="prettyprint">	git config --list
+</pre>
 <p>Check an individual setting.</p>
-<pre class="hljs"><code><div>	git config user.name
-</div></code></pre>
+<pre class="prettyprint">	git config user.name
+</pre>
 <p>Change individual settings.</p>
-<pre class="hljs"><code><div>	git config --global core.editor <span class="hljs-string">"C:\\Program Files\\Microsoft VS Code\\Code.exe --wait"</span>
+<pre class="prettyprint">	git config --global core.editor <span class="hljs-string">"C:\\Program Files\\Microsoft VS Code\\Code.exe --wait"</span>
 
 	git config --global color.ui <span class="hljs-literal">true</span>
-</div></code></pre>
+</pre>
 <h2 id="git-help">Git Help</h2>
-<pre class="hljs"><code><div>	git <span class="hljs-built_in">help</span>
+<pre class="prettyprint">	git <span class="hljs-built_in">help</span>
 
 	git <span class="hljs-built_in">help</span> <span class="hljs-built_in">log</span>
-</div></code></pre>
+</pre>
 <h3 id="change-drives-in-git-bash">Change drives in Git bash</h3>
-<pre class="hljs"><code><div>	<span class="hljs-built_in">cd</span> /D/Projects/Dirb
-</div></code></pre>
+<pre class="prettyprint">	<span class="hljs-built_in">cd</span> /D/Projects/Dirb
+</pre>
 <h2 id="distributed-version-conrol">Distributed Version Conrol</h2>
 <p>Different users maintain their own repositories. (no central repository)</p>
 <p>The changes are stored as <strong>change sets</strong> or <strong>patches</strong>.</p>
@@ -437,36 +146,36 @@ code {
 <h2 id="getting-started-with-git">Getting Started with Git</h2>
 <p>In your projects directory create a new directory, e.g. Git-Docs.</p>
 <p>cd into your new directory.</p>
-<pre class="hljs"><code><div>	<span class="hljs-built_in">cd</span> /C/Git/Git-Docs
-</div></code></pre>
+<pre class="prettyprint">	<span class="hljs-built_in">cd</span> /C/Git/Git-Docs
+</pre>
 <p>Now initialise the directory</p>
-<pre class="hljs"><code><div>	git init
-</div></code></pre>
+<pre class="prettyprint">	git init
+</pre>
 <p>You get the message.</p>
-<pre class="hljs"><code><div>	Initialized empty Git repository <span class="hljs-keyword">in</span> C:/Git/Git-Docs/.git/
-</div></code></pre>
+<pre class="prettyprint">	Initialized empty Git repository <span class="hljs-keyword">in</span> C:/Git/Git-Docs/.git/
+</pre>
 <p>This creates a hidden directory.</p>
-<pre class="hljs"><code><div>	.git
-</div></code></pre>
+<pre class="prettyprint">	.git
+</pre>
 <p>This is where Git tracks its changes.</p>
 <p>There is a configuration file,</p>
-<pre class="hljs"><code><div>	cat .git/config
-</div></code></pre>
+<pre class="prettyprint">	cat .git/config
+</pre>
 <p>This is user level configuration. This is also where the project configuration resides as well.</p>
 <p>The rest of the <strong>.git</strong> directory you should leave alone and let Git handle it.</p>
 <p>If you remove the <strong>.git</strong> directory you will remove all of the tracking for this project. Git centalises everything in this one directory.</p>
 <p>I can now add files into my directory.</p>
 <p>I can track the status of the project by.</p>
-<pre class="hljs"><code><div>	git status
-</div></code></pre>
+<pre class="prettyprint">	git status
+</pre>
 <p>This will tell me that I have no commits yet and one untracked file.</p>
 <p>I can now tell Git that I want to track the change and we can do that by.</p>
-<pre class="hljs"><code><div>	git add .
-</div></code></pre>
+<pre class="prettyprint">	git add .
+</pre>
 <p><code>.</code> is shorthand for all the files in the current directory.</p>
 <p>Once we have done this we have told Git to do this we aren't tracking the changes and to make the changes permanent we need to commit them.</p>
-<pre class="hljs"><code><div>	git commit -m <span class="hljs-string">"Initial commit."</span>
-</div></code></pre>
+<pre class="prettyprint">	git commit -m <span class="hljs-string">"Initial commit."</span>
+</pre>
 <p>This is the process we are going to follow for every job we do.</p>
 <h3 id="your-first-commit">Your first commit</h3>
 <ul>
@@ -487,32 +196,31 @@ code {
 <p>You can add the type of files that were changed in a shorthand [ccs, js] at the start of the message or the tracking number.</p>
 <p>Make sure your messages are clear and descriptive.</p>
 <h2 id="view-the-commit-log">View the Commit log</h2>
-<pre class="hljs"><code><div>	git <span class="hljs-built_in">log</span>
-</div></code></pre>
+<pre class="prettyprint">	git <span class="hljs-built_in">log</span>
+</pre>
 <p>Will show me a list of commits made for each project with the newest entry at the top.</p>
 <blockquote>
-<p>commit 5e8ac3e4e470e43dc17ad181bca04183d6f805d6 (HEAD -&gt; master)		
-Author: Alan Robson <a href="mailto:alanr@live.com.au">alanr@live.com.au</a>		
-Date:   Sun Sep 22 12:43:54 2019 +1000</p>
-<pre><code>  Initial commit.		
-</code></pre>
+commit 5e8ac3e4e470e43dc17ad181bca04183d6f805d6 (HEAD -&gt; master)<br/>
+Author: Alan Robson <a href="mailto:alanr@live.com.au">alanr@live.com.au</a><br/>
+Date:   Sun Sep 22 12:43:54 2019 +1000<br/>
+Initial commit.
 </blockquote>
 <p>Information in the message includes the sha value which is a unique key we can use to identify each commit. It shows me the author details and date of commit and gives me the message for the commit.</p>
 <p>There are some other options in the <em>git log</em> command.</p>
-<pre class="hljs"><code><div>	git <span class="hljs-built_in">log</span> -n 5
-</div></code></pre>
+<pre class="prettyprint">	git <span class="hljs-built_in">log</span> -n 5
+</pre>
 <p>Limits the number of commits to 5.</p>
-<pre class="hljs"><code><div>	git <span class="hljs-built_in">log</span> --since 2019-01-01
-</div></code></pre>
+<pre class="prettyprint">	git <span class="hljs-built_in">log</span> --since 2019-01-01
+</pre>
 <p>Shows me the commits since the start of this year.</p>
-<pre class="hljs"><code><div>	git <span class="hljs-built_in">log</span> --author=<span class="hljs-string">"Alan"</span>
-</div></code></pre>
+<pre class="prettyprint">	git <span class="hljs-built_in">log</span> --author=<span class="hljs-string">"Alan"</span>
+</pre>
 <p>I don't have to type in the full name.</p>
-<pre class="hljs"><code><div>	git <span class="hljs-built_in">log</span> --grep=<span class="hljs-string">"Init"</span>
-</div></code></pre>
+<pre class="prettyprint">	git <span class="hljs-built_in">log</span> --grep=<span class="hljs-string">"Init"</span>
+</pre>
 <p>or</p>
-<pre class="hljs"><code><div>	git <span class="hljs-built_in">log</span> --grep=<span class="hljs-string">"[Ii]nit"</span>
-</div></code></pre>
+<pre class="prettyprint">	git <span class="hljs-built_in">log</span> --grep=<span class="hljs-string">"[Ii]nit"</span>
+</pre>
 <p>This would be handy for bug fixes if you had referenced that in your commits.</p>
 <h2 id="setting-up-github">Setting up Github</h2>
 <p>I am using Azure DevOps because it keeps my Git projects private.</p>
@@ -520,14 +228,14 @@ Date:   Sun Sep 22 12:43:54 2019 +1000</p>
 <p>My repository will be named <code>Git-Docs</code>.</p>
 <p>I will get a set of commands that I can use to link my local repository to my Azure repository.</p>
 <p>First make sure that you don't already have a remote repository.</p>
-<pre class="hljs"><code><div>	git remote -v
-</div></code></pre>
+<pre class="prettyprint">	git remote -v
+</pre>
 <p>If you don't have a remote repository you can now create one.</p>
-<pre class="hljs"><code><div>	git remote add origin https://alanr.visualstudio.com/Git-Docs/_git/Git-Docs
-</div></code></pre>
+<pre class="prettyprint">	git remote add origin https://alanr.visualstudio.com/Git-Docs/_git/Git-Docs
+</pre>
 <p>I can then push to the remote server.</p>
-<pre class="hljs"><code><div>	git push -u origin --all
-</div></code></pre>
+<pre class="prettyprint">	git push -u origin --all
+</pre>
 <p>This will push all of my files up to the remote Azure server.</p>
 <h2 id="git-concepts-and-architecture">Git Concepts and Architecture</h2>
 <p>The usual structure for a version control system is a two tree structure.</p>
@@ -554,21 +262,21 @@ Date:   Sun Sep 22 12:43:54 2019 +1000</p>
 <p>We have a file that is version 1 in our working directory. We call these changes <code>A</code>.</p>
 <p><img src="assets/git/version-a.jpg" alt="Version A" title="Version A"></p>
 <p>So at present it is in our working directory not our staging or our repository.</p>
-<pre class="hljs"><code><div>	git add file.txt
-</div></code></pre>
+<pre class="prettyprint">	git add file.txt
+</pre>
 <p>Will add our file to the staging index.</p>
 <p><strong>Note:</strong> We can <em>add</em> all files with a <code>.</code> or add multiple files in one commit.</p>
-<pre class="hljs"><code><div>	git add file1.txt file2.txt
-</div></code></pre>
+<pre class="prettyprint">	git add file1.txt file2.txt
+</pre>
 <p>We can also add a directory of files.</p>
-<pre class="hljs"><code><div>	git add tours/
-</div></code></pre>
+<pre class="prettyprint">	git add tours/
+</pre>
 <p>Will save all files in the tours directory.</p>
 <p><img src="assets/git/staging-a.jpg" alt="Staging A" title="Staging A"></p>
 <p>Note: that at the moment we are just specifying a single file to be added.</p>
 <p>We now use.</p>
-<pre class="hljs"><code><div>	git commit
-</div></code></pre>
+<pre class="prettyprint">	git commit
+</pre>
 <p>(we would add a message at this stage)</p>
 <p>This pushes that changeset into the repository.</p>
 <p><img src="assets/git/repository-a.jpg" alt="Repository A" title="Repository A"></p>
@@ -583,25 +291,25 @@ Date:   Sun Sep 22 12:43:54 2019 +1000</p>
 <p>Now you can use <code>git log</code> to view those three commits (A,B, and C) to see what changed between each one. Of course Git doesn't refer to them as A,B and C but has a unique ID number that it applies to each changeset.</p>
 <h3 id="more-on-workflow">More on workflow</h3>
 <p>Now that we have added a remote repository there is an extra step in our process before we can upload files to all repositories. Carry out these steps</p>
-<pre class="hljs"><code><div>	git status
-</div></code></pre>
+<pre class="prettyprint">	git status
+</pre>
 <p>If there are unmodified files then you need to do this.</p>
-<pre class="hljs"><code><div>	git add .
-</div></code></pre>
+<pre class="prettyprint">	git add .
+</pre>
 <p>This will upload all changeset files to staging index.</p>
-<pre class="hljs"><code><div>	git commit -m <span class="hljs-string">"Added workflow notes"</span>
-</div></code></pre>
+<pre class="prettyprint">	git commit -m <span class="hljs-string">"Added workflow notes"</span>
+</pre>
 <p>Will commit the files to the local repository.</p>
 <p>At this stage all files are in the same state.</p>
 <p>Do a <code>git status</code> to make sure that nothing is modified and if so then push the latest files to the Azure repository.</p>
-<pre class="hljs"><code><div>	git push -u origin --all
-</div></code></pre>
+<pre class="prettyprint">	git push -u origin --all
+</pre>
 <p>or now that the remote files have been initially pushed you can use this command.</p>
-<pre class="hljs"><code><div>	git push
-</div></code></pre>
+<pre class="prettyprint">	git push
+</pre>
 <p>After this all files in the local and remote repositories are in the same state. Run a <code>git status</code> and you should receive this message.</p>
 <blockquote>
-<p>On branch master		
+<p>On branch master<br/>	
 Your branch is up to date with 'origin/master'.</p>
 <p>nothing to commit, working tree clean</p>
 </blockquote>
@@ -639,8 +347,8 @@ Your branch is up to date with 'origin/master'.</p>
 <p><img src="assets/git/new-branch.jpg" alt="New branch" title="New branch"></p>
 <p>We can move the HEAD between the two branches. Git moves the HEAD for us we don't have to be concerned with that.</p>
 <p>For our repository we can see where the HEAD exists.</p>
-<pre class="hljs"><code><div>	ls -la .git
-</div></code></pre>
+<pre class="prettyprint">	ls -la .git
+</pre>
 <p>You will see that there is a file named HEAD.</p>
 <blockquote>
 <p>cat .git/HEAD		
@@ -648,15 +356,14 @@ ref: refs/heads/master</p>
 </blockquote>
 <p>This is telling us that we can find this information in the refs director</p>
 <blockquote>
-<p>cat .git/refs/heads/master		
-938a47605721089babf0b4dfd7890fae7b91ac29</p>
+<p>cat .git/refs/heads/master 938a47605721089babf0b4dfd7890fae7b91ac29</p>
 </blockquote>
 <blockquote>
 <p>git log		
-commit 938a47605721089babf0b4dfd7890fae7b91ac29 (HEAD -&gt; master, origin/master)		
-Author: Alan Robson <a href="mailto:alanr@live.com.au">alanr@live.com.au</a>		
-Date:   Sun Sep 22 17:31:59 2019 +1000</p>
-<p>Added more workflow notes.</p>
+commit 938a47605721089babf0b4dfd7890fae7b91ac29 (HEAD -&gt; master, origin/master)<br/>		
+Author: Alan Robson <a href="mailto:alanr@live.com.au">alanr@live.com.au</a><br/>
+Date:   Sun Sep 22 17:31:59 2019 +1000<br/>
+Added more workflow notes.</p>
 </blockquote>
 <p>Note that <code>git log</code> will shows the commits and the latest sha value is the same as the one in <code>.git/refs/heads/master</code></p>
 <p>The log also tells us that the sha value is the HEAD -&gt; master.</p>
@@ -673,32 +380,32 @@ Date:   Sun Sep 22 17:31:59 2019 +1000</p>
 <p><img src="assets/git/git-add.jpg" alt="Git add" title="Git add"></p>
 <p>It will tell you that you have one file to be committed (unstaged) and one file to add (untracked).</p>
 <p>We can commit our one staging file by.</p>
-<pre class="hljs"><code><div>	git commit -m <span class="hljs-string">"Add second file to project."</span>
-</div></code></pre>
+<pre class="prettyprint">	git commit -m <span class="hljs-string">"Add second file to project."</span>
+</pre>
 <p>Do a <code>git log</code> and you will see that there is a new sha value and that the HEAD has moved.</p>
 <p>Now you can <code>git add third_file</code> to move the untracked file to staging and then do a <code>git commit -m &quot;Add third file to project&quot;</code>.</p>
 <p><code>git log</code> will tell you that the third_file.txt was committed (the HEAD will have moved) and a <code>git status</code> will tell you that there is nothing else to do.</p>
 <h3 id="view-changes-with-diff">View changes with <code>diff</code></h3>
 <p>This allows us to see changes in our working directory.</p>
-<pre class="hljs"><code><div>	git diff
-</div></code></pre>
+<pre class="prettyprint">	git diff
+</pre>
 <blockquote>
-<p>diff --git a/UsingGit.md b/UsingGit.md		
-index dc92054..6e7d904 100644		
---- a/UsingGit.md		
+<p>diff --git a/UsingGit.md b/UsingGit.md<br/>
+index dc92054..6e7d904 100644<br/>
+--- a/UsingGit.md<br/>
 +++ b/UsingGit.md</p>
 </blockquote>
 <p>File <strong>a</strong> is in my repository and file <strong>b</strong> is in my working directory. The list has a number of <code>+</code> lines which have been added to my working file. They are also coloured green.</p>
 <p>The <code>-</code> will tell you a line has been changed or removed.</p>
 <p><strong>Note:</strong> We can do a <em>diff</em> on a particular file in the changeset.</p>
-<pre class="hljs"><code><div>	git diff file.txt
-</div></code></pre>
+<pre class="prettyprint">	git diff file.txt
+</pre>
 <h3 id="view-only-staged-changes">View only staged changes</h3>
-<pre class="hljs"><code><div>	git diff --staged
-</div></code></pre>
+<pre class="prettyprint">	git diff --staged
+</pre>
 <p>This will show us the differences between the staging area and the repository.</p>
-<pre class="hljs"><code><div>	git diff --cached
-</div></code></pre>
+<pre class="prettyprint">	git diff --cached
+</pre>
 <p>Is exactly the same thing as <code>--staged</code>. cached is an alias but it is preferable to use staged.</p>
 <h3 id="deleting-files">Deleting files</h3>
 <p>You have to tell Git that you want to delete files that you have committed.</p>
@@ -710,44 +417,44 @@ index dc92054..6e7d904 100644
 <p>The first technique is to just delete the file from the directory. We will delete file 1.</p>
 <p><code>git status</code> will give you the message.</p>
 <blockquote>
-<p>Changes not staged for commit:	
-(use &quot;git add/rm <file>...&quot; to update what will be committed)	
-(use &quot;git restore <file>...&quot; to discard changes in working directory)	
+<p>Changes not staged for commit:<br/>	
+(use &quot;git add/rm <file>...&quot; to update what will be committed)<br/>
+(use &quot;git restore <file>...&quot; to discard changes in working directory)<br/>
 deleted:    file-delete1.txt</p>
 </blockquote>
 <p>It tells you that you have deleted a file.</p>
 <p>Now to remove it from Git.</p>
-<pre class="hljs"><code><div>	git rm file-delete1.txt
-</div></code></pre>
+<pre class="prettyprint">	git rm file-delete1.txt
+</pre>
 <p>it will give you this message. It tells you that it has removed the file from the repository.</p>
 <blockquote>
 <p>rm 'file-delete1.txt'</p>
 </blockquote>
 <p><code>git status</code> tells us that the file is now in the staging area.</p>
 <blockquote>
-<p>Changes to be committed:		
-(use &quot;git restore --staged <file>...&quot; to unstage)		
+<p>Changes to be committed:<br/>	
+(use &quot;git restore --staged <file>...&quot; to unstage)<br/>
 deleted:    file-delete1.txt</p>
 </blockquote>
 <p>Now to get rid of it from staging.</p>
-<pre class="hljs"><code><div>	git commit -m <span class="hljs-string">"Delete first file."</span>
-</div></code></pre>
+<pre class="prettyprint">	git commit -m <span class="hljs-string">"Delete first file."</span>
+</pre>
 <p>You get this message.</p>
 <blockquote>
-<p>git commit -m &quot;Delete first file.&quot;		
-[master 6f42ee0] Delete first file.		
-1 file changed, 1 deletion(-)		
+<p>git commit -m &quot;Delete first file.&quot;<br/>
+[master 6f42ee0] Delete first file.<br/>
+1 file changed, 1 deletion(-)<br/>
 delete mode 100644 file-delete1.txt</p>
 </blockquote>
 <p>The second technique to remove a file is to tell Git to remove it.</p>
-<pre class="hljs"><code><div>	git rm file-delete2.txt
-</div></code></pre>
+<pre class="prettyprint">	git rm file-delete2.txt
+</pre>
 <p>You will get a message saying that Git has removed the file. If you look in your directory you will see that it has gone. It is a Unix command that has removed the file and you will notice that it isn't in your recycle bin as well.</p>
 <p>It is still in the repository so we could get a copy from there if we needed it.</p>
 <p><code>git status</code> tells you that the file 2 is in the staging directory.</p>
 <p>This is a step shorter than the first technique as Git deletes the file for you and adds it to the staging directory.</p>
-<pre class="hljs"><code><div>	git commit -m <span class="hljs-string">"Delete second file."</span>
-</div></code></pre>
+<pre class="prettyprint">	git commit -m <span class="hljs-string">"Delete second file."</span>
+</pre>
 <p><code>git status</code> should report that there is nothing to do.</p>
 <h3 id="move-and-rename-files">Move and rename files</h3>
 <p>There are two techniques to move or rename files.</p>
@@ -756,92 +463,92 @@ delete mode 100644 file-delete1.txt</p>
 <p><img src="assets/git/rename-file.jpg" alt="Rename file" title="Rename file"></p>
 <p>The original filename has been deleted and the renamed file isn't being tracked. It is listing them as two separate events.</p>
 <p>So now you have two steps to do.</p>
-<pre class="hljs"><code><div>	git add primary_file.txt
+<pre class="prettyprint">	git add primary_file.txt
 	git rm first_file.txt
-</div></code></pre>
+</pre>
 <p><img src="assets/git/rename-file.jpg" alt="Rename file" title="Rename file"></p>
 <p>Git now recognises that we have renamed the file. It doesn't pick up on it initially but it does pick it up in staging.</p>
 <p>The next technique for renaming a file is to <strong>move</strong> it.</p>
-<pre class="hljs"><code><div>	git mv second_file.txt secondary_file.txt
-</div></code></pre>
+<pre class="prettyprint">	git mv second_file.txt secondary_file.txt
+</pre>
 <p>The file name has been changed in our directory and <code>git status</code> tells us that the file has been added to our staging area and that we have renamed the file.</p>
 <p><img src="assets/git/rename-second-file.jpg" alt="Rename second file" title="Rename second file"></p>
 <p>The second technique is a little more efficient.</p>
 <p>Now we can add a new directory into our project and then move a file from the root into the new directory.</p>
 <p>The file will be flagged as deleted and the new directory will be flagged as a new file that is untracked.</p>
 <p>Now in the directory shift the file back into the root and run this command.</p>
-<pre class="hljs"><code><div>	git mv third_file.txt first_directory/third_file.txt
-</div></code></pre>
+<pre class="prettyprint">	git mv third_file.txt first_directory/third_file.txt
+</pre>
 <p><img src="assets/git/move-file.jpg" alt="Move file" title="Move file"></p>
 <p>This is more efficient as it puts all the changes into staging. It has also moved the file.</p>
 <p>Now wrap up by committing the changes.</p>
 <h3 id="diff-options">Diff options</h3>
-<pre class="hljs"><code><div>	git diff
-</div></code></pre>
+<pre class="prettyprint">	git diff
+</pre>
 <p>This will fold (wrap) the text in bash. If you don't want to fold text.</p>
-<pre class="hljs"><code><div>	-S
-</div></code></pre>
+<pre class="prettyprint">	-S
+</pre>
 <p>To wrap again just do another -S.</p>
 <blockquote>
 <p>b - to move back in the diff (or the Up arrow)</p>
 <p>f - to move forward in the diff (or the Down arrow)</p>
 </blockquote>
 <p>Diff will show the whole line of text that contains the change. If you only want to show the text is old and new.</p>
-<pre class="hljs"><code><div>	git diff --color-words
-</div></code></pre>
+<pre class="prettyprint">	git diff --color-words
+</pre>
 <p>This will highlight only the changed text in colour.</p>
 <p>To compare two commits.</p>
-<pre class="hljs"><code><div>	git diff 12ac456..a234d4c6
-</div></code></pre>
+<pre class="prettyprint">	git diff 12ac456..a234d4c6
+</pre>
 <p>Where the first sha value is the oldest and the next sha value is later.</p>
 <p>or</p>
-<pre class="hljs"><code><div>	git diff 12ac456..HEAD
-</div></code></pre>
+<pre class="prettyprint">	git diff 12ac456..HEAD
+</pre>
 <p>Where the first value is the older sha value and the next is the latest (HEAD) value.</p>
 <p>You can also select a changeset (commit) to view.</p>
-<pre class="hljs"><code><div>	git show 5337a16679e8a200d57354444fa84a95d3658f50
-</div></code></pre>
+<pre class="prettyprint">	git show 5337a16679e8a200d57354444fa84a95d3658f50
+</pre>
 <p>Once again you could also add <code>--color-words</code> to this line</p>
-<pre class="hljs"><code><div>	git show 5337a16679e8a200d57354444fa84a95d3658f50 --color-words
-</div></code></pre>
+<pre class="prettyprint">	git show 5337a16679e8a200d57354444fa84a95d3658f50 --color-words
+</pre>
 <h3 id="commit-in-one-step">Commit in one step</h3>
 <p>You can bypass the <code>add</code> to staging step.</p>
-<pre class="hljs"><code><div>	git commit -am <span class="hljs-string">"Fixes blah, blah."</span>
-</div></code></pre>
+<pre class="prettyprint">	git commit -am <span class="hljs-string">"Fixes blah, blah."</span>
+</pre>
 <p>Note: There are two important caveats.</p>
 <ul>
 <li>Stages and commits all changes to <em>tracked</em> files.</li>
 <li>Does not includes untracked files.</li>
 </ul>
 <p>You can also commit with a multiple line message.</p>
-<pre class="hljs"><code><div>	git commit -a
-</div></code></pre>
+<pre class="prettyprint">	git commit -a
+</pre>
 <p>This will stop and wait for you to add a multiple line comment in your text editor.</p>
 <p><img src="assets/git/multiple-lines.jpg" alt="Multiple lines" title="Multiple lines"></p>
 <p>Once you have saved and closed the commit message editor window in your text editor you will go back to bash and see the final message letting you know that you have committed your changeset.</p>
 <p><img src="assets/git/commit-message.jpg" alt="Commit message" title="Commit message"></p>
 <h3 id="log-options">Log options</h3>
 <p>You can limit the number of commits you see in the log.</p>
-<pre class="hljs"><code><div>	git <span class="hljs-built_in">log</span> -n1
-</div></code></pre>
+<pre class="prettyprint">	git <span class="hljs-built_in">log</span> -n1
+</pre>
 <p>This limits to the latest commit.</p>
 <p>To only see the first line of each commit.</p>
-<pre class="hljs"><code><div>	git <span class="hljs-built_in">log</span> --oneline
-</div></code></pre>
+<pre class="prettyprint">	git <span class="hljs-built_in">log</span> --oneline
+</pre>
 <p>This will show you a one line message for each commit.</p>
 <h2 id="using-git-in-a-real-project">Using Git in a real project</h2>
 <p>We are using Git for the Explore California website project. We open the directory in the directory structure where we keep our projects.</p>
 <p>If you run <code>git status</code> in the directory you will get a message stating that the directory is not a Git repository. This means that if we want Git to track our files we need to initialise the directory.</p>
-<pre class="hljs"><code><div>	git init
-</div></code></pre>
+<pre class="prettyprint">	git init
+</pre>
 <p>Now if you do an <code>ls -la</code> you will see that we have a <strong>.git</strong> directory in our directory. This shows us that Git has been added. If we do a <code>git status</code> now we will see that we have untracked files.</p>
 <p>If you do a <code>git log</code> you will get an error because the HEAD is not pointed at anything meaning that we haven't committed yet.</p>
 <p>So now we do a commit.</p>
-<pre class="hljs"><code><div>	git commit -m <span class="hljs-string">"Initial commit."</span>
-</div></code></pre>
+<pre class="prettyprint">	git commit -m <span class="hljs-string">"Initial commit."</span>
+</pre>
 <p>This adds all of the files to our repository.</p>
-<pre class="hljs"><code><div>	git <span class="hljs-built_in">log</span>
-</div></code></pre>
+<pre class="prettyprint">	git <span class="hljs-built_in">log</span>
+</pre>
 <p>Will show our first commit.</p>
 <p>Note that each directory in your working directory that has a <strong>.git</strong> directory in it is a separate Git repository.</p>
 <h3 id="making-atomic-commits">Making atomic commits</h3>
@@ -856,47 +563,47 @@ delete mode 100644 file-delete1.txt</p>
 <p>In this case we are going to delete the navigation from the Index.html file. We have closed our text editor and saved file changes to the working directory.</p>
 <p>We then realise that we didn't really mean to make these changes and we can't use the editor to undo the changes.</p>
 <p>We still have a copy of the original file in Git's repository so we can bring it back with the following command.</p>
-<pre class="hljs"><code><div>	git checkout -- index.html
-</div></code></pre>
+<pre class="prettyprint">	git checkout -- index.html
+</pre>
 <p>The double dash <strong>--</strong> is telling Git that we want to checkout from the current branch.</p>
 <p>Once we do this it will return the copy of <em>index.html</em> from the repository and place it in or working directory.</p>
-<pre class="hljs"><code><div>	git status
-</div></code></pre>
+<pre class="prettyprint">	git status
+</pre>
 <p>Tells us that there is nothing to do.</p>
 <p>If you look at <em>index.html</em> you will see that it is back to its original state.</p>
 <h3 id="unstage-files">Unstage files</h3>
 <p>We will do a global search for $150 and replace that price with $175. This will do 11 changes across 10 files.</p>
 <p><code>git status</code> tells us that we have a number of files to update. We will only update the files in the tours directory.</p>
-<pre class="hljs"><code><div>	git add tours*
-</div></code></pre>
+<pre class="prettyprint">	git add tours*
+</pre>
 <p><img src="assets/git/staging-status.jpg" alt="Staging status" title="Staging status"></p>
 <p>Say we decide to unstage the tours files we can do this by</p>
-<pre class="hljs"><code><div>	git reset HEAD tours*
-</div></code></pre>
+<pre class="prettyprint">	git reset HEAD tours*
+</pre>
 <p>This will remove the tours files from the staging tree.</p>
 <p><img src="assets/git/git-reset.jpg" alt="Reset the staging tree" title="Reset the staging tree"></p>
 <p>Now let's revert the files back to the way they were before we did the changes.</p>
-<pre class="hljs"><code><div>	git checkout -- .
-</div></code></pre>
+<pre class="prettyprint">	git checkout -- .
+</pre>
 <p><code>git status</code> and a check of the files will tell us that we are back to the unchanged state.</p>
 <h3 id="amending-commits">Amending commits</h3>
 <p>We are going to amend commits that are already in the repository.</p>
 <p>Remember that we can't change any of the old commits without breaking the chain. There is one set of commits that we can change and that is the current (HEAD) commit.</p>
 <p>We are going to change the resource.html file. Change the order of sunglasses and sunscreen. We will place them under hat. <code>git diff</code> will show us what has changed.</p>
-<pre class="hljs"><code><div>	git commit -am <span class="hljs-string">"Changed items to bring."</span>
-</div></code></pre>
+<pre class="prettyprint">	git commit -am <span class="hljs-string">"Changed items to bring."</span>
+</pre>
 <p><code>git status</code> shows us there is nothing to do and <code>git diff -n1</code> shows us the current commit with the message &quot;Changed items to bring.&quot;.</p>
 <p>Now we realise that we needed to shift insect repellant up with the other changes we made in the current commit. Let's do this.</p>
 <p><code>git diff</code> shows us what has changed and we want to amend this to the previous (HEAD) commit.</p>
 <p>first,</p>
-<pre class="hljs"><code><div>	git add resources.html
-</div></code></pre>
+<pre class="prettyprint">	git add resources.html
+</pre>
 <p><code>get status</code> will show us that it is now staged.</p>
 <p>Do a <code>git log --oneline</code>.</p>
 <p><img src="assets/git/log1.jpg" alt="git log 1" title="git log 1"></p>
 <p>If we want log1 to the previous commit.</p>
-<pre class="hljs"><code><div>	git commit --amend -m <span class="hljs-string">"Reorder recommended items for trip."</span>
-</div></code></pre>
+<pre class="prettyprint">	git commit --amend -m <span class="hljs-string">"Reorder recommended items for trip."</span>
+</pre>
 <p>Now do another <code>git log --oneline</code>.</p>
 <p><img src="assets/git/log2.jpg" alt="git log 2" title="git log 2"></p>
 <p>Notice that the comment in the previous commit has been changed to the new amended message. Also notice that the sha has changed because the files have been changed.</p>
@@ -907,8 +614,8 @@ delete mode 100644 file-delete1.txt</p>
 <p>We can see that we have all of the changes.</p>
 <p><img src="assets/git/git-show.jpg" alt="git show" title="git show"></p>
 <p>Now we have decided that we want to amend the message for the previous commit.</p>
-<pre class="hljs"><code><div>	git commit --amend -m <span class="hljs-string">"Reorder recommended items for outdoor trip."</span>
-</div></code></pre>
+<pre class="prettyprint">	git commit --amend -m <span class="hljs-string">"Reorder recommended items for outdoor trip."</span>
+</pre>
 <p><code>git log -n1</code> will show us that the message has been amended. Note also that the sha value changed even though all I changed was the message.</p>
 <h3 id="retrieve-old-versions-of-files">Retrieve old versions of files</h3>
 <p>Git only allows amending the most recent commit otherwise we wouldn't be able to verify the chain of integrity.</p>
@@ -917,22 +624,22 @@ delete mode 100644 file-delete1.txt</p>
 <p>We did a small change to the <em>index.html</em> file. Do a <code>git log -n1</code> to try and find the commit where we changed <em>index.html</em>.</p>
 <p><img src="assets/git/git-show.jpg" alt="git show" title="git show"></p>
 <p>It has a sha value of 48cba47.</p>
-<pre class="hljs"><code><div>	git show 48cba47 --color-words
-</div></code></pre>
+<pre class="prettyprint">	git show 48cba47 --color-words
+</pre>
 <p>Will show you where the change occurred but we really want the commit before that which has a sha value of 18b0d3e.</p>
 <p>I want the <em>index.html</em> page from that commit.</p>
-<pre class="hljs"><code><div>	git checkout 18b0d3e -- index.html
-</div></code></pre>
+<pre class="prettyprint">	git checkout 18b0d3e -- index.html
+</pre>
 <p><code>git status</code> will show that file in the staging directory. So now I can do a,</p>
-<pre class="hljs"><code><div>	git diff --staged
-</div></code></pre>
+<pre class="prettyprint">	git diff --staged
+</pre>
 <p><img src="assets/git/change.jpg" alt="Show changes" title="Show changes"></p>
 <p>The text in red (you'll) is what was the old version and the green (you will) is what is in the staging file and the working directory so we have reverted back to the old version of the file.</p>
 <p>Looking at the index page you will see that the text has reverted back to the original &quot;you'll&quot; text.</p>
 <p>do a <code>git diff --staged --color-words</code> and you will see that the change is in the staging directory.</p>
 <p>Now we can commit that change and we will have both changes committed.</p>
-<pre class="hljs"><code><div>	git commit index.html -m <span class="hljs-string">"Revert back to original text."</span>
-</div></code></pre>
+<pre class="prettyprint">	git commit index.html -m <span class="hljs-string">"Revert back to original text."</span>
+</pre>
 <p><code>git log</code> will show that we have both commits.</p>
 <h3 id="revert-a-commit">Revert a commit</h3>
 <p>Reverting a commit is to just undo that commit.</p>
@@ -941,8 +648,8 @@ delete mode 100644 file-delete1.txt</p>
 <p>We are going to make a commit that reverses the last commit. There is an even easier way than the way we did it previously.</p>
 <p>Do a <code>git log -n1</code> to get the sha value of the last commit. 5e3ad0f185cc</p>
 <p>now revert by.</p>
-<pre class="hljs"><code><div>	git revert 5e3ad0f185cc
-</div></code></pre>
+<pre class="prettyprint">	git revert 5e3ad0f185cc
+</pre>
 <p>This will open your editor with a message about reverting. You can add extra text if you want but if not jst save and close. Now check the logs again and you will see the latest commit has the message about reverting.</p>
 <p><img src="assets/git/revert.jpg" alt="Revert the previous commit" title="Revert the previous commit"></p>
 <p>You will see the HEAD message,</p>
@@ -951,45 +658,45 @@ delete mode 100644 file-delete1.txt</p>
 <p>This reverts commit 5e3ad0f185cc422360de01c300e3b30bf87cab32.</p>
 </blockquote>
 <p>It tells you that you have reverted the previous commit and the sha value of the previous commit is there for reference.</p>
-<pre class="hljs"><code><div>	git show HEAD --color-words
-</div></code></pre>
+<pre class="prettyprint">	git show HEAD --color-words
+</pre>
 <p>Will show you the latest changes and a quick look at the index page shows that you have reverted back to the original text.</p>
 <p><code>git show HEAD</code> is a good way to look at the latest commit changes.</p>
 <h3 id="removing-untracked-files">Removing untracked files</h3>
 <p>We occasionally have untracked files that we don't really need in our project. There is an easy way to remove these using Git rather than deleting them manually.</p>
 <p>Imaging we have three text files in our project - junk1.txt, junk2.txt and junk3.txt.</p>
 <p><code>git status</code> tells us that we have three untracked files ready to be added.</p>
-<pre class="hljs"><code><div>	git clean -n
-</div></code></pre>
+<pre class="prettyprint">	git clean -n
+</pre>
 <p>Warns us about what can be removed. This is a dry run, a safety net. The message we receive is.</p>
 <blockquote>
-<p>Would remove junk1.txt		
-Would remove junk2.txt		
+<p>Would remove junk1.txt<br/>
+Would remove junk2.txt<br/>
 Would remove junk3.txt</p>
 </blockquote>
 <p>Let's add <em>junk1.txt</em> to staging.</p>
-<pre class="hljs"><code><div>	git add junk1.txt
-</div></code></pre>
+<pre class="prettyprint">	git add junk1.txt
+</pre>
 <p>Run <code>git clean -n</code> again and it tells us.</p>
 <blockquote>
-<p>Would remove junk2.txt		
+<p>Would remove junk2.txt<br/>
 Would remove junk3.txt</p>
 </blockquote>
 <p><em>junk1.txt</em> is in the staging area so won't be removed. It is only removing untracked files, not files in the staging tree or repository. It is only removing files in my working directory.</p>
-<pre class="hljs"><code><div>	git clean -f
-</div></code></pre>
+<pre class="prettyprint">	git clean -f
+</pre>
 <p>This is the message we receive.
 <code>-f</code> is the force removal of items. It will totally remove these files. This is the message we receive.</p>
 <blockquote>
-<p>Removing junk2.txt
+<p>Removing junk2.txt<br/>
 Removing junk3.txt</p>
 </blockquote>
 <p>If I do a <code>git status</code> it will tell me that <em>junk1.txt</em> is in the staging tree.</p>
-<pre class="hljs"><code><div>	git reset HEAD junk1.txt
-</div></code></pre>
+<pre class="prettyprint">	git reset HEAD junk1.txt
+</pre>
 <p>Will remove it from the staging tree and then we can remove it by.</p>
-<pre class="hljs"><code><div>	git clean -f
-</div></code></pre>
+<pre class="prettyprint">	git clean -f
+</pre>
 <p>This will remove the file permanently and give us the message.</p>
 <blockquote>
 <p>Removing junk1.txt</p>
@@ -1004,29 +711,29 @@ Removing junk3.txt</p>
 <li>Changes made to ignored files will be ignored by Git.</li>
 </ul>
 <p>We can put in a simple rule or we can use pattern matching (basic regular expressions).</p>
-<pre class="hljs"><code><div>	?*[aeiou][0-9]
-</div></code></pre>
+<pre class="prettyprint">	?*[aeiou][0-9]
+</pre>
 <p>If we want to ignore all log files in the log directory</p>
-<pre class="hljs"><code><div>	logs/*.txt
-</div></code></pre>
+<pre class="prettyprint">	logs/*.txt
+</pre>
 <p>This ignores all <em>php</em> files but we don't want to ignore <em>index.php</em>.</p>
-<pre class="hljs"><code><div>	*.php
+<pre class="prettyprint">	*.php
 	!index.php
-</div></code></pre>
+</pre>
 <p>To ignore all files in a directory use the trailing slash.</p>
-<pre class="hljs"><code><div>	assets/videos/
-</div></code></pre>
+<pre class="prettyprint">	assets/videos/
+</pre>
 <p>Would ignore all files in the videos directory.</p>
 <p>You can put comments in a <code>.gitignore</code> file.</p>
-<pre class="hljs"><code><div>	<span class="hljs-comment"># This is a comment</span>
-</div></code></pre>
+<pre class="prettyprint">	<span class="hljs-comment"># This is a comment</span>
+</pre>
 <p>Blank lines are skipped.</p>
 <p>Imagine we have a log file in our directory named <em>access.log</em> and it keeps changing all the time. We wouldn't want Git to track these changes.</p>
 <p><code>git status</code> tells us that there is a new file not being tracked.</p>
 <p>Add another new file named <strong>.gitignore</strong> and add the line <em>access.log</em> to it.</p>
 <p>Now if you do a <code>git status</code> it will tell you that there is only one untracked file named <em>.gitignore</em> and <em>access.log</em> is ignored.</p>
 <p>Add these changes to <em>.gitignore</em></p>
-<pre class="hljs"><code><div>	<span class="hljs-comment"># Demo example</span>
+<pre class="prettyprint">	<span class="hljs-comment"># Demo example</span>
 
 	.DS_Store
 	thumbs.db
@@ -1041,69 +748,69 @@ Removing junk3.txt</p>
 	assets/videos/
 	!assets/videos/tours_*.mp4
 	access.log
-</div></code></pre>
+</pre>
 <p>Now commit the <em>.gitignore</em> file.</p>
-<pre class="hljs"><code><div>	git add .gitignore
+<pre class="prettyprint">	git add .gitignore
 
 	git commit -am <span class="hljs-string">"Add .gitignore file."</span>
-</div></code></pre>
+</pre>
 <p>Github keep a set of gitignore files for projects like Visual Studio solutions. You can see these at:</p>
 <p>https://github.com/github/gitignore</p>
 <h3 id="globally-ignore-files">Globally ignore files</h3>
 <p>You can set a global gitignore file with any name. It is bes to save this in your user directory. We can create this by:</p>
-<pre class="hljs"><code><div>	git config --global core.excludesfile ~/.gitignore-global
-</div></code></pre>
+<pre class="prettyprint">	git config --global core.excludesfile ~/.gitignore-global
+</pre>
 <p>This will create a global gitignore file but I ended up having to create it in my Users/alanr directory manually.</p>
 <p>You may want to put your gitignores in the project file for each project so that if somebody clones your project they can have the same set of gitignores as you.</p>
 <p>If you don't want to copy the same set of gitignores to each project then add them to a global gitignores file.</p>
 <p>I have decided to just keep the obvious files in my global gitignores file.</p>
-<pre class="hljs"><code><div>	*.tmp
+<pre class="prettyprint">	*.tmp
 	*.bak
 	thumbs.db
 	*.<span class="hljs-built_in">log</span>
-</div></code></pre>
+</pre>
 <h3 id="ignore-tracked-files">Ignore tracked files</h3>
 <p>You can ignore files that aren't being tracked but you can't easily ignore files that are already being tracked.</p>
 <p>We can tell Git to ignore files that we are already tracking with a bit of work.</p>
 <p>Let's create a fake db configuration file named <em>db_config.txt</em>. Add some database keys in it.</p>
 <p>Do a <code>git status</code> and you will see a new untracked file.</p>
-<pre class="hljs"><code><div>	git add db_config.txt
+<pre class="prettyprint">	git add db_config.txt
 
 	git commit -m <span class="hljs-string">"Add database configuration file."</span>
-</div></code></pre>
+</pre>
 <p>Now we have committed the file so we are tracking it and any changes to it will be tracked.</p>
 <p>Now let's tell <em>.gitignore</em> to ignore **db_config.txt. Do a <code>git status</code> and you will see you have made changes to <em>.gitignore</em>.</p>
 <p>Now make a change to <em>db_config.txt</em>.</p>
 <p>Do a <code>git status</code> again and you will notice that it <strong>hasn't</strong> ignored <em>db_config.txt</em> as we expected.</p>
 <p>This is our problem. Git doesn't ignore this file even though we asked it to ignore the file. Git seems to want to hold onto the file and keep on tracking it.</p>
 <p>We could use the following command:</p>
-<pre class="hljs"><code><div>	git rm db_config.txt
-</div></code></pre>
+<pre class="prettyprint">	git rm db_config.txt
+</pre>
 <p>This would remove the file from our working directory and move it to the staging tree ready for us to commit and then the file would be gone. That would be one way to get rid of it but we don't want to remove it from our working directory. What we want to do is remove it from our staging index. The way we can do this is to:</p>
-<pre class="hljs"><code><div>	git rm --cached db_config.txt
-</div></code></pre>
+<pre class="prettyprint">	git rm --cached db_config.txt
+</pre>
 <p>Remember that <code>git diff --staged</code> or <code>git diff --cached</code> are the same. That is not the case with <code>rm</code>.</p>
 <p>It gives us the message that it has:</p>
-<pre class="hljs"><code><div>	rm <span class="hljs-string">'db_config.txt'</span>
-</div></code></pre>
+<pre class="prettyprint">	rm <span class="hljs-string">'db_config.txt'</span>
+</pre>
 <p>If you look in the directory you will see the file <em>db_config.txt</em> and a <code>git status</code> gives us the following message.</p>
 <p><img src="assets/git/cached.jpg" alt="git rm --cached message" title="git rm --cached message"></p>
-<pre class="hljs"><code><div>	git diff --staged
-</div></code></pre>
+<pre class="prettyprint">	git diff --staged
+</pre>
 <p>Tells us that the file is ready for deletion. It has deleted the <em>db_config.txt</em> file but it is still in our working directory.</p>
-<pre class="hljs"><code><div>	git add .gitignore
-</div></code></pre>
+<pre class="prettyprint">	git add .gitignore
+</pre>
 <p>So <code>git status</code> tells us that we have two files to be committed.</p>
-<pre class="hljs"><code><div>	git commit -m <span class="hljs-string">"Stop tracking changes to db_config.txt"</span>
-</div></code></pre>
+<pre class="prettyprint">	git commit -m <span class="hljs-string">"Stop tracking changes to db_config.txt"</span>
+</pre>
 <p><code>git status</code> tells us that there is nothing to be committed and our file is still there.</p>
 <p>Now make a change to <em>db_config.txt</em>.</p>
 <p>Do a <code>git status</code> and you see that it is not tracking the changes to <em>db_config.txt</em>.</p>
 <p>Now our <em>.gitignore</em> is working. The file is still in our repository and if someone comes along and clones our project they will get the <em>db_config.txt</em> file in their project.</p>
 <h3 id="track-empty-directories">Track empty directories</h3>
 <p>Git doesn't track empty directories. We can prove this because there is an <em>explorers</em> directory in our project that is empty.</p>
-<pre class="hljs"><code><div>	git ls-tree HEAD
-</div></code></pre>
+<pre class="prettyprint">	git ls-tree HEAD
+</pre>
 <p>This command will list all files/directories in the project directory at the time of the last commit.</p>
 <p>It lists the <em>resources</em> directory because it has a <em>faq.html</em> file in it but ignores the <em>explorers</em> directory because there are no files in it. This proves that Git doesn't track empty directories.
 Do another test to prove this. Add a <em>temp</em> directory into our project.</p>
@@ -1113,27 +820,27 @@ Do another test to prove this. Add a <em>temp</em> directory into our project.</
 <p>There is a way around this by adding a <strong>.gitkeep</strong> empty file in the <em>temp</em> directory.</p>
 <p>Add a <em>.gitkeep</em> empty file into our <em>explorers</em> directory.</p>
 <p><code>git status</code> tells us that <em>explorers/</em> is an untracked directory.</p>
-<pre class="hljs"><code><div>	git add explorers/
-</div></code></pre>
+<pre class="prettyprint">	git add explorers/
+</pre>
 <p>Adds the file to the staging tree.</p>
 <p><code>git status</code> tells us that <em>explorers/.gitkeep</em> is in staging and ready to commit. At this state it wants to save the <em>.gitkeep</em> file.</p>
-<pre class="hljs"><code><div>	git commit -m <span class="hljs-string">"Track explorers directory."</span>
-</div></code></pre>
+<pre class="prettyprint">	git commit -m <span class="hljs-string">"Track explorers directory."</span>
+</pre>
 <p>Completes the process. Now if I make changes to <em>.gitkeep</em> it will track changes and if my project is cloned it will contain the <em>explorers</em> directory.</p>
 <p>If you want to create an empty file in a directory you can use the following command:</p>
-<pre class="hljs"><code><div>	touch temp/.gitkeep
-</div></code></pre>
+<pre class="prettyprint">	touch temp/.gitkeep
+</pre>
 <h3 id="additional-notes">Additional Notes</h3>
 <p>I have also noticed an interesting Git command in Stackoverflow.</p>
-<pre class="hljs"><code><div>	git reflog
-</div></code></pre>
+<pre class="prettyprint">	git reflog
+</pre>
 <p>Shows one line for each commit.</p>
-<pre class="hljs"><code><div>	git reflog -all
-</div></code></pre>
+<pre class="prettyprint">	git reflog -all
+</pre>
 <p>Shows the HEAD information for each commit. Maybe a bit too much information.</p>
 <p>You can also get a complete list of your bash history by using the following command.</p>
-<pre class="hljs"><code><div>	<span class="hljs-built_in">history</span> &gt; alan.log
-</div></code></pre>
+<pre class="prettyprint">	<span class="hljs-built_in">history</span> &gt; alan.log
+</pre>
 <p>This is a list of everything I have done in Git bash since I installed it.</p>
 <p>The original file is kept in Users/alanr/.bash_history</p>
 <h2 id="git-on-azure-devops">Git on Azure DevOps</h2>
@@ -1142,13 +849,27 @@ Do another test to prove this. Add a <em>temp</em> directory into our project.</
 <p>It was an easy process to add authentication.</p>
 <p>I opened my repository on username.VisualStudio.com and click the <code>clone</code> button. I then click on <strong>Generate Git Credentials</strong> and this generates a password that I can use for cloning the repository.</p>
 <p>I can interrogate the repository with the following command.</p>
-<pre class="hljs"><code><div>	git config --list
-</div></code></pre>
+<pre class="prettyprint">	git config --list
+</pre>
 <p>If you want to interrogate a remote Github repository use this command.</p>
-<pre class="hljs"><code><div>	git remote show origin
-</div></code></pre>
+<pre class="prettyprint">	git remote show origin
+</pre>
 <p>I will also need the generated password to get this information.</p>
 <p><strong>Note:</strong> If I want to <code>push</code> or <code>pull</code> commits to my Ubuntu file structure I have to use this generated password so it is vitally important that I don't lose this password.</p>
 
+</div><!-- starter-template -->
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"/>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>
+

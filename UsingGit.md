@@ -27,6 +27,7 @@ Git creates a  config file in your users directory. Mine is C:\Users\alanr
 ```bash
 	cat .gitconfig
 ```
+
 .
 
 ```bash
@@ -1209,7 +1210,7 @@ Now commit the *.gitignore* file.
 
 Github keep a set of gitignore files for projects like Visual Studio solutions. You can see these at:
 
-https://github.com/github/gitignore
+<https://github.com/github/gitignore>
 
 ### Globally ignore files
 
@@ -1404,3 +1405,5 @@ If you want to interrogate a remote Github repository use this command.
 I will also need the generated password to get this information.
 
 **Note:** If I want to ``push`` or ``pull`` commits to my Ubuntu file structure I have to use this generated password so it is vitally important that I don't lose this password.
+
+## Advanced Git
