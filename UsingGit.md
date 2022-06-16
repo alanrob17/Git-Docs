@@ -1635,7 +1635,7 @@ Now do:
 
 This will show us the files that were changed within a commit.
 
-> commit 4e4281f66b804abc4f69f62a6fa5546cc9163667 (HEAD -> main)		
+> commit 4e4281f66b804abc4f69f62a6fa5546cc9163667 (HEAD -> main)			
 > Author: Alan Robson <alanr@live.com.au>		
 > Date:   Wed Jun 15 17:29:53 2022 +1000		
 > 		
@@ -1646,3 +1646,175 @@ This will show us the files that were changed within a commit.
 >  2 files changed, 1 insertion(+), 1 deletion(-)
 
 The line **test2.js | 0** means that the file has been added to the previous commit.
+
+Once again you should be aware that you have changed the Git History.
+
+### Resetting a commit
+
+We can remove the last commit. First to a ``git log``.
+
+```bash
+	git log
+```
+
+Returns.
+
+> commit 4e4281f66b804abc4f69f62a6fa5546cc9163667 (HEAD -> main)		
+> Author: Alan Robson <alanr@live.com.au>		
+> Date:   Wed Jun 15 17:29:53 2022 +1000		
+> 		
+>     Update yearsUntilRetirement() function.		
+> 		
+> commit f7efadb366c096ea27d5a39eb21ef6acd0987d52 (feature)		
+> Author: Alan Robson <alanr@live.com.au>		
+> Date:   Wed Jun 15 16:32:31 2022 +1000		
+> 		
+>     Add functions.		
+> 		
+> commit 9134a1035b5fe2ce5860c15994c073e908fdc609		
+> Author: Alan Robson <...
+
+We want to remove the commit with the hash value of **4e4281f6**.
+
+There are 3 types of **reset**.
+
+#### git reset --soft
+
+```bash
+	git reset --soft f7efadb
+```
+
+The hash value is the second last commit.
+
+This removes the last commit (4e4281f6) and doing a ``git log`` shows that the last commit has been removed.
+
+> commit f7efadb366c096ea27d5a39eb21ef6acd0987d52 (HEAD -> main, feature)		
+> Author: Alan Robson <alanr@live.com.au>		
+> Date:   Wed Jun 15 16:32:31 2022 +1000		
+> 		
+>     Add functions.		
+> 		
+> commit 9134a1035b5fe2ce5860c15994c073e908fdc609		
+> Author: Alan Robson <alanr@live.com.au>		
+> Date:   Wed Jun 15 16:13:41 2022 +1000		
+> 		
+>     Initial commit.
+
+Now, if you do a ``git status``.
+
+```bash
+	git status
+```
+
+Returns.
+
+> On branch main		
+> Changes to be committed:		
+>   (use "git restore --staged <file>..." to unstage)		
+>         modified:   test.js		
+>         new file:   test2.js
+
+With a **soft reset** you get to keep your changes from the last commit.
+
+#### Git reset --mixed
+
+Is the **default** for a reset. So once again get the same hash value you used previously.
+
+```bash
+	git reset f7efadb
+```
+
+Returns.
+
+> Unstaged changes after reset:		
+> M       test.js
+
+Then do a ``git status`` and see what it returns.
+
+> On branch main		
+> Changes not staged for commit:		
+>   (use "git add <file>..." to update what will be committed)		
+>   (use "git restore <file>..." to discard changes in working directory)		
+>         modified:   test.js		
+> 		
+> Untracked files:		
+>   (use "git add <file>..." to include in what will be committed)		
+>         test2.js		
+> 		
+> no changes added to commit (use "git add" and/or "git commit -a")
+
+``git reset --mixed`` has taken the changes from the staging area and put them into the working directory.
+
+The difference between ``--soft`` and ``--mixed`` is that ``--soft`` puts the committed files back in the staging area and ``--mixed`` puts the files back in the working area.
+
+We don't want to keep the changes we have made so we can do a ``git reset --hard``.
+
+#### git reset --hard
+
+Grab the same hash again.
+
+```bash
+	git reset --hard f7efadb
+```
+
+Returns.
+
+> HEAD is now at f7efadb Add functions.
+
+```bash
+	git log
+```
+
+Returns.
+
+> commit f7efadb366c096ea27d5a39eb21ef6acd0987d52 (HEAD -> main, feature)		
+> Author: Alan Robson <alanr@live.com.au>		
+> Date:   Wed Jun 15 16:32:31 2022 +1000		
+> 		
+>     Add functions.		
+> 		
+> commit 9134a1035b5fe2ce5860c15994c073e908fdc609
+
+Our last commit has gone. Now if we do a ``git status`` it returns.
+
+> On branch main		
+> Untracked files:		
+>   (use "git add <file>..." to include in what will be committed)		
+>         test2.js		
+> 		
+> nothing added to commit but untracked files present (use "git add" to track)
+
+Remember that ``git reset --hard`` will return out tracked files to the state that they were in with the hash (f7efadb) commit.
+
+**Note:** that with a ``--hard`` reset it will leave the new file as untracked. It won't remove the file(s).
+
+Be careful with ``git reset --hard`` you will lose all of your tracked changes up to that commit hash.
+
+### git clean
+
+If we want to get rid of the untracked files we can use.
+
+```bash
+	git clean -df
+```
+
+Where ``-d`` is untracked directories and ``-f`` is untracked files.
+
+Returns.
+
+> Removing test2.js
+
+```bash
+	git status
+```
+
+Returns.
+
+> On branch main		
+> nothing to commit, working tree clean
+
+So now we are completely back to the state of the previous commit.
+
+This is really handy to get rid of untracked files and directories. For example, imagine you unzipped a zip file in your git repository and then wanted to remove all of the files and directories you accidentally created? A ``git clean`` can clean up your untracked files and directories for you. If you tried to manually delete these files it would cause you problems and you many leave untracked files around.
+
+Time 14.42

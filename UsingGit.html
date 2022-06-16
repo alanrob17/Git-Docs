@@ -1277,7 +1277,56 @@ Date:   Wed Jun 15 17:29:53 2022 +1000</p>
 <p>We only want to change the history when we are the only ones that have access to the changes we have made.</p>
 <p>Later we will look at ways that we can make changes without changing the history.</p>
 <p>If you are the only one working on this file then changing the commit message will clean up your commit messages and that is a good thing.</p>
-<p>Time 5.50.</p>
+<h3 id="adding-files-after-git-commit">Adding files after git commit</h3>
+<p>Imagine that we want to add a file to the previous commit.</p>
+<pre class="hljs"><code><div>	touch test2.js
+</div></code></pre>
+<p>Now, we Add that file to the staging area.</p>
+<pre class="hljs"><code><div>	git add test2.js
+</div></code></pre>
+<p>do a Status command.</p>
+<pre class="hljs"><code><div>	git status
+</div></code></pre>
+<blockquote>
+<p>On branch main		
+Changes to be committed:		
+(use &quot;git restore --staged <file>...&quot; to unstage)		
+new file:   test2.js</p>
+</blockquote>
+<p>We can now commit that file to the previous commit.</p>
+<pre class="hljs"><code><div>	git commit --amend
+</div></code></pre>
+<p>This will open an interactive text editor with the contents.</p>
+<blockquote>
+<p>Update yearsUntilRetirement() function.</p>
+<p>Please enter the commit message for your changes. Lines starting		
+with '#' will be ignored, and an empty message aborts the commit.</p>
+<p>Date:      Wed Jun 15 17:29:53 2022 +1000</p>
+<p>On branch main		
+Changes to be committed:		
+modified:   test.js		
+new file:   test2.js</p>
+</blockquote>
+<p>We don't want to change the commit message and we only want to add the test2.js file to the previous commit. To save the edits.</p>
+<pre class="hljs"><code><div>	!wc
+</div></code></pre>
+<p>And this will close the editor.</p>
+<p>If you do a <code>git log</code> you will see that the last commit is that same as the previous commit.</p>
+<p>Now do:</p>
+<pre class="hljs"><code><div>	git <span class="hljs-built_in">log</span> --<span class="hljs-built_in">stat</span>
+</div></code></pre>
+<p>This will show us the files that were changed within a commit.</p>
+<blockquote>
+<p>commit 4e4281f66b804abc4f69f62a6fa5546cc9163667 (HEAD -&gt; main)		
+Author: Alan Robson <a href="mailto:alanr@live.com.au">alanr@live.com.au</a>		
+Date:   Wed Jun 15 17:29:53 2022 +1000</p>
+<pre><code>Update yearsUntilRetirement() function.		
+</code></pre>
+<p>test.js  | 2 +-		
+test2.js | 0		
+2 files changed, 1 insertion(+), 1 deletion(-)</p>
+</blockquote>
+<p>The line <strong>test2.js | 0</strong> means that the file has been added to the previous commit.</p>
 
 </body>
 </html>
