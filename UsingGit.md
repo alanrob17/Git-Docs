@@ -1572,4 +1572,77 @@ Later we will look at ways that we can make changes without changing the history
 
 If you are the only one working on this file then changing the commit message will clean up your commit messages and that is a good thing.
 
-Time 5.50.
+### Adding files after git commit
+
+Imagine that we want to add a file to the previous commit.
+
+```bash
+	touch test2.js
+```
+
+Now, we Add that file to the staging area.
+
+```bash
+	git add test2.js
+```
+
+do a Status command.
+
+```bash
+	git status
+```
+
+> On branch main		
+> Changes to be committed:		
+>   (use "git restore --staged <file>..." to unstage)		
+>         new file:   test2.js
+
+We can now commit that file to the previous commit.
+
+```bash
+	git commit --amend
+```
+
+This will open an interactive text editor with the contents.
+
+> Update yearsUntilRetirement() function.		
+> 		
+> Please enter the commit message for your changes. Lines starting		
+> with '#' will be ignored, and an empty message aborts the commit.		
+> 	
+> Date:      Wed Jun 15 17:29:53 2022 +1000		
+> 	
+> On branch main		
+> Changes to be committed:		
+>       modified:   test.js		
+>       new file:   test2.js		
+
+We don't want to change the commit message and we only want to add the test2.js file to the previous commit. To save the edits.
+
+```bash
+	!wc
+```
+
+And this will close the editor.
+
+If you do a ``git log`` you will see that the last commit is that same as the previous commit.
+
+Now do:
+
+```bash
+	git log --stat
+```
+
+This will show us the files that were changed within a commit.
+
+> commit 4e4281f66b804abc4f69f62a6fa5546cc9163667 (HEAD -> main)		
+> Author: Alan Robson <alanr@live.com.au>		
+> Date:   Wed Jun 15 17:29:53 2022 +1000		
+> 		
+>     Update yearsUntilRetirement() function.		
+> 		
+>  test.js  | 2 +-		
+>  test2.js | 0		
+>  2 files changed, 1 insertion(+), 1 deletion(-)
+
+The line **test2.js | 0** means that the file has been added to the previous commit.
