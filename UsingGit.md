@@ -1414,7 +1414,7 @@ Sometimes you will make a bad commit and will need to roll back. Some of these c
 	git branch
 ```
 
-> * master
+> \* master
 
 ### Create a new branch
 
@@ -1428,7 +1428,7 @@ The **-b** option will create and switch you to the **feature** branch. Check yo
 	git branch
 ```
 
-> * feature		
+> \* feature		
 >   main
 
 Now you see that you are on branch **feature**.
@@ -1440,8 +1440,7 @@ Now you see that you are on branch **feature**.
 ```
 
 > feature		
->
-> * main
+> \* main
 
 Will send you back to the **main** branch.
 
@@ -1480,10 +1479,10 @@ Returns.
 > +		
 > +let addNumbers = (a, b) => {		
 >
-> * return a + b;		
+> \* return a + b;		
 > +}		
 >
-> *		
+> \*		
 > +let total = addNumbers(7, 12);		
 > +console.log(total)
 
@@ -1817,4 +1816,160 @@ So now we are completely back to the state of the previous commit.
 
 This is really handy to get rid of untracked files and directories. For example, imagine you unzipped a zip file in your git repository and then wanted to remove all of the files and directories you accidentally created? A ``git clean`` can clean up your untracked files and directories for you. If you tried to manually delete these files it would cause you problems and you many leave untracked files around.
 
-Time 14.42
+### Git reflog
+
+Imagine that the changes that you deleted contained code that you now want to retrieve. You can use a ``reflog`` to see a list of changes you have made.
+
+```bash
+	git reflog
+```
+
+> f7efadb (HEAD -> main, feature) HEAD@{0}: reset: moving to f7efadb		
+> f7efadb (HEAD -> main, feature) HEAD@{1}: reset: moving to f7efadb		
+> f7efadb (HEAD -> main, feature) HEAD@{2}: reset: moving to f7efadb		
+> 4e4281f HEAD@{3}: commit (amend): Update yearsUntilRetirement() function.		
+> 04fd5b8 HEAD@{4}: commit (amend): 1 3 41		
+> 848aa1d HEAD@{5}: commit (amend): Updated yearsUntilRetirement() function.		
+> c42282c HEAD@{6}: commit: Updated calculateAge function.		
+> f7efadb (HEAD -> main, feature) HEAD@{7}: checkout: moving from feature to main		
+> f7efadb (HEAD -> main, feature) HEAD@{8}: checkout: moving from main to feature		
+> f7efadb (HEAD -> main, feature) HEAD@{9}: commit: Add functions.		
+> 9134a10 HEAD@{10}: commit (initial): Initial commit.
+
+**NOTE:** Git garbage collection will only store these changes for around 30 days.
+
+The following commit line contains the changes that we have deleted and we want to get back to this state.
+
+> 848aa1d HEAD@{5}: commit (amend): Updated yearsUntilRetirement() function.
+
+We can return to this with.
+
+```bash
+	git checkout 848aa1d
+```
+
+When we go back into our code we can see the retirement age has been increased to 67 which was our only change.
+
+```javascript
+	let retirement = 67 - age;
+```
+
+If we do a ``git log`` we can see that we have our commit back (848aa1d).
+
+> commit 848aa1df9301323df6fa0e5a05bd71b4795ad8a0 (HEAD)		
+> Author: Alan Robson <alanr@live.com.au>		
+> Date:   Wed Jun 15 17:29:53 2022 +1000		
+> 		
+>     Updated yearsUntilRetirement() function.		
+> 		
+> commit f7efadb366c0
+
+Right now we are in a detached HEAD state. A simple explanation for this is that we aren't on a branch and where we are at present will be trashed in the future.
+
+We can create a branch to store these changes.
+
+```bash
+	git branch backup
+```
+
+Now if we do a ``git branch`` we can see.
+
+> \* (HEAD detached at 848aa1d)		
+>   backup		
+>   feature		
+>   main
+
+Now, we want to get back to the **main** branch.
+
+```bash
+	git checkout main
+```
+
+Now do a ``branch`` again.
+
+```bash
+	git branch
+```
+
+We get the following message.
+
+> Previous HEAD position was 848aa1d Updated yearsUntilRetirement() function.		
+> Switched to branch 'main'
+
+Checking our code we are back to.
+
+> let retirement = 65 - age;
+
+Check the branches.
+
+>   backup		
+>   feature		
+> \* main
+
+``git reflog`` can be a lifesaver if you thought you lost some code and can really help you out if you know how to use it.
+
+### Seeing changes between branches
+
+Go back to the **backup** branch.
+
+```bash
+	git checkout backup
+```
+
+Now.
+
+```bash
+	git log
+```
+
+> commit 848aa1df9301323df6fa0e5a05bd71b4795ad8a0 (HEAD -> backup)		
+> Author: Alan Robson <alanr@live.com.au>		
+> Date:   Wed Jun 15 17:29:53 2022 +1000		
+> 		
+>     Updated yearsUntilRetirement() function.		
+> 		
+> commit f7efadb366c096ea27d5a39eb21ef6acd0987d52 (main, feature)		
+> Author: Alan Robson <alanr@live.com.au>		
+> Date:   Wed Jun 15 16:32:31 2022 +1000		
+> 		
+>     Add functions.		
+> 		
+> commit 9134a1035b5fe2ce5860c15994c073e908fdc609		
+> Author: Alan Robson <alanr@live.com.au>		
+> Date:   Wed Jun 15 16:13:41 2022 +1000
+
+We want to see what was changed in hash 848aa1d.
+
+```bash
+	git diff 848aa1d f7efadb
+```
+
+Returns.
+
+> diff --git a/test.js b/test.js		
+> index 5a63442..0f2c435 100644		
+> --- a/test.js		
+> +++ b/test.js		
+> @@ -9,7 +9,7 @@ console.log('The age is ' + age); // The age is 34		
+> 		
+>  let yearsUntilRetirement = (year, firstName) => {		
+>      let age = calculateAge(year); // you can call a function within a function		
+>
+> * let retirement = 67 - age;		
+>
+> * let retirement = 65 - age;		
+> 		
+>      if (retirement > 0) {		
+>          console.log(firstName + ' retires in ' + retirement + ' years.');
+
+This now shows us that in the backup we changed the retirement age from 65 to 67.
+
+We will now return to **main**
+
+```bash
+	git checkout main
+```
+
+### Git revert
+
+``git revert`` will allow you to keep your history. I will look at this in the future.
