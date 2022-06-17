@@ -230,12 +230,11 @@ Make sure your messages are clear and descriptive.
 
 Will show me a list of commits made for each project with the newest entry at the top.
 
-> commit 5e8ac3e4e470e43dc17ad181bca04183d6f805d6 (HEAD -> master)		
-> Author: Alan Robson <alanr@live.com.au>		
-> Date:   Sun Sep 22 12:43:54 2019 +1000		
-> 		
-> 		Initial commit.		
->
+> commit 5e8ac3e4e470e43dc17ad181bca04183d6f805d6 (HEAD -> master)
+> Author: Alan Robson <alanr@live.com.au>
+> Date:   Sun Sep 22 12:43:54 2019 +1000
+> 
+> 		Initial commit.
 
 Information in the message includes the sha value which is a unique key we can use to identify each commit. It shows me the author details and date of commit and gives me the message for the commit.
 
@@ -443,9 +442,9 @@ or now that the remote files have been initially pushed you can use this command
 
 After this all files in the local and remote repositories are in the same state. Run a ``git status`` and you should receive this message.
 
-> On branch master		
-> Your branch is up to date with 'origin/master'.		
-> 		
+> On branch master
+> Your branch is up to date with 'origin/master'.
+> 
 > nothing to commit, working tree clean
 
 ### Hash values (SHA-1)
@@ -512,19 +511,19 @@ For our repository we can see where the HEAD exists.
 
 You will see that there is a file named HEAD.
 
-> cat .git/HEAD		
+> cat .git/HEAD
 > 	ref: refs/heads/master
 
 This is telling us that we can find this information in the refs director
 
-> cat .git/refs/heads/master		
+> cat .git/refs/heads/master
 > 938a47605721089babf0b4dfd7890fae7b91ac29
-
-> git log		
-> commit 938a47605721089babf0b4dfd7890fae7b91ac29 (HEAD -> master, origin/master)		
-> Author: Alan Robson <alanr@live.com.au>		
-> Date:   Sun Sep 22 17:31:59 2019 +1000		
->		
+> 
+> git log	
+> commit 938a47605721089babf0b4dfd7890fae7b91ac29 (HEAD -> master, origin/master)
+> Author: Alan Robson <alanr@live.com.au>
+> Date:   Sun Sep 22 17:31:59 2019 +1000
+>
 >    Added more workflow notes.
 
 Note that ``git log`` will shows the commits and the latest sha value is the same as the one in `.git/refs/heads/master`
@@ -545,7 +544,7 @@ If we make any changes to these files before we do the ``git add`` process then 
 
 Doing a ``git add`` will move the files into the staging tree.
 
-You cna move all files with a ``.`` or name each file to be added. Say we had two files to add, second_file.txt and third_file.txt.
+You can move all files with a ``.`` or name each file to be added. Say we had two files to add, second_file.txt and third_file.txt.
 
 We will only add one file, second_file.txt.
 
@@ -575,9 +574,9 @@ This allows us to see changes in our working directory.
 	git diff
 ```
 
-> diff --git a/UsingGit.md b/UsingGit.md		
+> diff --git a/UsingGit.md b/UsingGit.md
 > index dc92054..6e7d904 100644		
-> --- a/UsingGit.md		
+> --- a/UsingGit.md
 > +++ b/UsingGit.md
 
 File **a** is in my repository and file **b** is in my working directory. The list has a number of ``+`` lines which have been added to my working file. They are also coloured green.
@@ -622,9 +621,9 @@ The first technique is to just delete the file from the directory. We will delet
 
 ``git status`` will give you the message.
 
-> Changes not staged for commit:	
->  (use "git add/rm <file>..." to update what will be committed)	
->  (use "git restore <file>..." to discard changes in working directory)	
+> Changes not staged for commit:
+>  (use "git add/rm <file>..." to update what will be committed)
+>  (use "git restore <file>..." to discard changes in working directory)
 >        deleted:    file-delete1.txt
 
 It tells you that you have deleted a file.
@@ -641,8 +640,8 @@ it will give you this message. It tells you that it has removed the file from th
 
 ``git status`` tells us that the file is now in the staging area.
 
-> Changes to be committed:		
->  (use "git restore --staged <file>..." to unstage)		
+> Changes to be committed:
+>  (use "git restore --staged <file>..." to unstage)
 >        deleted:    file-delete1.txt
 
 Now to get rid of it from staging.
@@ -653,9 +652,9 @@ Now to get rid of it from staging.
 
 You get this message.
 
-> git commit -m "Delete first file."		
-> [master 6f42ee0] Delete first file.		
-> 	1 file changed, 1 deletion(-)		
+> git commit -m "Delete first file."
+> [master 6f42ee0] Delete first file.
+> 	1 file changed, 1 deletion(-)
 >   delete mode 100644 file-delete1.txt
 
 The second technique to remove a file is to tell Git to remove it.
@@ -743,8 +742,8 @@ This will fold (wrap) the text in bash. If you don't want to fold text.
 
 To wrap again just do another -S.
 
-> b - to move back in the diff (or the Up arrow)		
->		
+> b - to move back in the diff (or the Up arrow)	
+>
 > f - to move forward in the diff (or the Down arrow)
 
 Diff will show the whole line of text that contains the change. If you only want to show the text is old and new.
@@ -1053,8 +1052,8 @@ This will open your editor with a message about reverting. You can add extra tex
 
 You will see the HEAD message,
 
-> Revert "Revert back to original text."		
->		
+> Revert "Revert back to original text."	
+>
 > This reverts commit 5e3ad0f185cc422360de01c300e3b30bf87cab32.
 
 It tells you that you have reverted the previous commit and the sha value of the previous commit is there for reference.
@@ -1081,8 +1080,8 @@ Imaging we have three text files in our project - junk1.txt, junk2.txt and junk3
 
 Warns us about what can be removed. This is a dry run, a safety net. The message we receive is.
 
-> Would remove junk1.txt		
-> Would remove junk2.txt		
+> Would remove junk1.txt
+> Would remove junk2.txt
 > Would remove junk3.txt
 
 Let's add *junk1.txt* to staging.
@@ -1093,7 +1092,7 @@ Let's add *junk1.txt* to staging.
 
 Run ``git clean -n`` again and it tells us.
 
-> Would remove junk2.txt		
+> Would remove junk2.txt
 > Would remove junk3.txt
 
 *junk1.txt* is in the staging area so won't be removed. It is only removing untracked files, not files in the staging tree or repository. It is only removing files in my working directory.
@@ -1428,7 +1427,7 @@ The **-b** option will create and switch you to the **feature** branch. Check yo
 	git branch
 ```
 
-> \* feature		
+> \* feature
 >   main
 
 Now you see that you are on branch **feature**.
@@ -1439,7 +1438,7 @@ Now you see that you are on branch **feature**.
 	git checkout main
 ```
 
-> feature		
+> feature
 > \* main
 
 Will send you back to the **main** branch.
@@ -1452,12 +1451,12 @@ You have added some code to a file.
 	git status
 ```
 
-> On branch main		
-> Changes not staged for commit:		
->   (use "git add <file>..." to update what will be committed)		
->   (use "git restore <file>..." to discard changes in working directory)		
->         modified:   test.js		
-> 		
+> On branch main	
+> Changes not staged for commit:
+>   (use "git add <file>..." to update what will be committed)
+>   (use "git restore <file>..." to discard changes in working directory)
+>         modified:   test.js
+> 
 > no changes added to commit (use "git add" and/or "git commit -a")
 
 Now, do a **diff**.
@@ -1468,22 +1467,22 @@ Now, do a **diff**.
 
 Returns.
 
-> diff --git a/test.js b/test.js		
-> index 0f2c435..3b7e699 100644		
-> --- a/test.js		
-> +++ b/test.js		
-> @@ -21,3 +21,10 @@ let yearsUntilRetirement = (year, firstName) => {		
->  yearsUntilRetirement(yearBorn, firstName);		
->  		
->  yearsUntilRetirement(1952, 'Alan');		
-> +		
-> +let addNumbers = (a, b) => {		
+> diff --git a/test.js b/test.js
+> index 0f2c435..3b7e699 100644
+> --- a/test.js
+> +++ b/test.js
+> @@ -21,3 +21,10 @@ let yearsUntilRetirement = (year, firstName) => {
+>  yearsUntilRetirement(yearBorn, firstName);
+>  
+>  yearsUntilRetirement(1952, 'Alan');
+> +
+> +let addNumbers = (a, b) => {
 >
-> \* return a + b;		
-> +}		
+> \* return a + b;
+> +}
 >
-> \*		
-> +let total = addNumbers(7, 12);		
+> \*
+> +let total = addNumbers(7, 12);
 > +console.log(total)
 
 Now I have decided I don't want to keep this code and I want to revert to my previous code.
@@ -1504,7 +1503,7 @@ Now, check the status
 
 Returns.
 
-> On branch main		
+> On branch main
 > nothing to commit, working tree clean
 
 If you now go back to you **test.js** file you will see that the new code has disappeared.
@@ -1525,10 +1524,10 @@ When I commit I accidentally name the function as ``calculateAge()``.
 
 Returns.
 
-> commit c42282c6889ad5311a1892222fe0d5d1a2c0d806 (HEAD -> main)		
-> Author: Alan Robson <alanr@live.com.au>		
-> Date:   Wed Jun 15 17:29:53 2022 +1000		
-> 		
+> commit c42282c6889ad5311a1892222fe0d5d1a2c0d806 (HEAD -> main)
+> Author: Alan Robson <alanr@live.com.au>
+> Date:   Wed Jun 15 17:29:53 2022 +1000
+> 
 >     Updated calculateAge function.
 
 We now realise that we have named the wrong function in the commit message.
@@ -1541,8 +1540,8 @@ How do we change this message without adding another commit?
 
 Returns.
 
-> [main 848aa1d] Updated yearsUntilRetirement() function.		
->  Date: Wed Jun 15 17:29:53 2022 +1000		
+> [main 848aa1d] Updated yearsUntilRetirement() function.
+>  Date: Wed Jun 15 17:29:53 2022 +1000
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 
 Now do a ``log``.
@@ -1553,10 +1552,10 @@ Now do a ``log``.
 
 Returns.
 
-> commit 848aa1df9301323df6fa0e5a05bd71b4795ad8a0 (HEAD -> main)		
-> Author: Alan Robson <alanr@live.com.au>		
-> Date:   Wed Jun 15 17:29:53 2022 +1000		
-> 		
+> commit 848aa1df9301323df6fa0e5a05bd71b4795ad8a0 (HEAD -> main)	
+> Author: Alan Robson <alanr@live.com.au>
+> Date:   Wed Jun 15 17:29:53 2022 +1000
+> 
 >     Updated yearsUntilRetirement() function.
 
 You can see the correct function name.
@@ -1591,9 +1590,9 @@ do a Status command.
 	git status
 ```
 
-> On branch main		
-> Changes to be committed:		
->   (use "git restore --staged <file>..." to unstage)		
+> On branch main
+> Changes to be committed:
+>   (use "git restore --staged <file>..." to unstage)
 >         new file:   test2.js
 
 We can now commit that file to the previous commit.
@@ -1604,17 +1603,17 @@ We can now commit that file to the previous commit.
 
 This will open an interactive text editor with the contents.
 
-> Update yearsUntilRetirement() function.		
-> 		
-> Please enter the commit message for your changes. Lines starting		
-> with '#' will be ignored, and an empty message aborts the commit.		
-> 	
-> Date:      Wed Jun 15 17:29:53 2022 +1000		
-> 	
-> On branch main		
-> Changes to be committed:		
->       modified:   test.js		
->       new file:   test2.js		
+> Update yearsUntilRetirement() function.
+> 
+> Please enter the commit message for your changes. Lines starting
+> with '#' will be ignored, and an empty message aborts the commit.
+>
+> Date:      Wed Jun 15 17:29:53 2022 +1000
+>
+> On branch main
+> Changes to be committed:
+>       modified:   test.js
+>       new file:   test2.js
 
 We don't want to change the commit message and we only want to add the test2.js file to the previous commit. To save the edits.
 
@@ -1634,14 +1633,14 @@ Now do:
 
 This will show us the files that were changed within a commit.
 
-> commit 4e4281f66b804abc4f69f62a6fa5546cc9163667 (HEAD -> main)			
-> Author: Alan Robson <alanr@live.com.au>		
-> Date:   Wed Jun 15 17:29:53 2022 +1000		
-> 		
->     Update yearsUntilRetirement() function.		
-> 		
->  test.js  | 2 +-		
->  test2.js | 0		
+> commit 4e4281f66b804abc4f69f62a6fa5546cc9163667 (HEAD -> main)
+> Author: Alan Robson <alanr@live.com.au>
+> Date:   Wed Jun 15 17:29:53 2022 +1000
+> 
+>     Update yearsUntilRetirement() function.
+> 
+>  test.js  | 2 +-
+>  test2.js | 0
 >  2 files changed, 1 insertion(+), 1 deletion(-)
 
 The line **test2.js | 0** means that the file has been added to the previous commit.
@@ -1658,19 +1657,19 @@ We can remove the last commit. First to a ``git log``.
 
 Returns.
 
-> commit 4e4281f66b804abc4f69f62a6fa5546cc9163667 (HEAD -> main)		
-> Author: Alan Robson <alanr@live.com.au>		
-> Date:   Wed Jun 15 17:29:53 2022 +1000		
-> 		
->     Update yearsUntilRetirement() function.		
-> 		
-> commit f7efadb366c096ea27d5a39eb21ef6acd0987d52 (feature)		
-> Author: Alan Robson <alanr@live.com.au>		
-> Date:   Wed Jun 15 16:32:31 2022 +1000		
-> 		
->     Add functions.		
-> 		
-> commit 9134a1035b5fe2ce5860c15994c073e908fdc609		
+> commit 4e4281f66b804abc4f69f62a6fa5546cc9163667 (HEAD -> main)
+> Author: Alan Robson <alanr@live.com.au>
+> Date:   Wed Jun 15 17:29:53 2022 +1000
+> 
+>     Update yearsUntilRetirement() function.
+> 
+> commit f7efadb366c096ea27d5a39eb21ef6acd0987d52 (feature)
+> Author: Alan Robson <alanr@live.com.au>
+> Date:   Wed Jun 15 16:32:31 2022 +1000
+> 
+>     Add functions.
+> 
+> commit 9134a1035b5fe2ce5860c15994c073e908fdc609
 > Author: Alan Robson <...
 
 We want to remove the commit with the hash value of **4e4281f6**.
@@ -1687,16 +1686,16 @@ The hash value is the second last commit.
 
 This removes the last commit (4e4281f6) and doing a ``git log`` shows that the last commit has been removed.
 
-> commit f7efadb366c096ea27d5a39eb21ef6acd0987d52 (HEAD -> main, feature)		
-> Author: Alan Robson <alanr@live.com.au>		
-> Date:   Wed Jun 15 16:32:31 2022 +1000		
-> 		
->     Add functions.		
-> 		
-> commit 9134a1035b5fe2ce5860c15994c073e908fdc609		
-> Author: Alan Robson <alanr@live.com.au>		
-> Date:   Wed Jun 15 16:13:41 2022 +1000		
-> 		
+> commit f7efadb366c096ea27d5a39eb21ef6acd0987d52 (HEAD -> main, feature)
+> Author: Alan Robson <alanr@live.com.au>
+> Date:   Wed Jun 15 16:32:31 2022 +1000
+> 
+>     Add functions.
+> 
+> commit 9134a1035b5fe2ce5860c15994c073e908fdc609
+> Author: Alan Robson <alanr@live.com.au>
+> Date:   Wed Jun 15 16:13:41 2022 +1000
+> 
 >     Initial commit.
 
 Now, if you do a ``git status``.
@@ -1707,10 +1706,10 @@ Now, if you do a ``git status``.
 
 Returns.
 
-> On branch main		
-> Changes to be committed:		
->   (use "git restore --staged <file>..." to unstage)		
->         modified:   test.js		
+> On branch main
+> Changes to be committed:
+>   (use "git restore --staged <file>..." to unstage)
+>         modified:   test.js
 >         new file:   test2.js
 
 With a **soft reset** you get to keep your changes from the last commit.
@@ -1725,21 +1724,21 @@ Is the **default** for a reset. So once again get the same hash value you used p
 
 Returns.
 
-> Unstaged changes after reset:		
+> Unstaged changes after reset:
 > M       test.js
 
 Then do a ``git status`` and see what it returns.
 
-> On branch main		
-> Changes not staged for commit:		
->   (use "git add <file>..." to update what will be committed)		
->   (use "git restore <file>..." to discard changes in working directory)		
->         modified:   test.js		
-> 		
-> Untracked files:		
->   (use "git add <file>..." to include in what will be committed)		
->         test2.js		
-> 		
+> On branch main
+> Changes not staged for commit:
+>   (use "git add <file>..." to update what will be committed)
+>   (use "git restore <file>..." to discard changes in working directory)
+>         modified:   test.js
+> 
+> Untracked files:
+>   (use "git add <file>..." to include in what will be committed)
+>         test2.js
+> 
 > no changes added to commit (use "git add" and/or "git commit -a")
 
 ``git reset --mixed`` has taken the changes from the staging area and put them into the working directory.
@@ -1766,21 +1765,21 @@ Returns.
 
 Returns.
 
-> commit f7efadb366c096ea27d5a39eb21ef6acd0987d52 (HEAD -> main, feature)		
-> Author: Alan Robson <alanr@live.com.au>		
-> Date:   Wed Jun 15 16:32:31 2022 +1000		
-> 		
->     Add functions.		
-> 		
+> commit f7efadb366c096ea27d5a39eb21ef6acd0987d52 (HEAD -> main, feature)
+> Author: Alan Robson <alanr@live.com.au>
+> Date:   Wed Jun 15 16:32:31 2022 +1000
+> 
+>     Add functions.
+> 
 > commit 9134a1035b5fe2ce5860c15994c073e908fdc609
 
 Our last commit has gone. Now if we do a ``git status`` it returns.
 
-> On branch main		
-> Untracked files:		
->   (use "git add <file>..." to include in what will be committed)		
->         test2.js		
-> 		
+> On branch main
+> Untracked files:
+>   (use "git add <file>..." to include in what will be committed)
+>         test2.js
+> 
 > nothing added to commit but untracked files present (use "git add" to track)
 
 Remember that ``git reset --hard`` will return out tracked files to the state that they were in with the hash (f7efadb) commit.
@@ -1809,7 +1808,7 @@ Returns.
 
 Returns.
 
-> On branch main		
+> On branch main
 > nothing to commit, working tree clean
 
 So now we are completely back to the state of the previous commit.
@@ -1824,16 +1823,16 @@ Imagine that the changes that you deleted contained code that you now want to re
 	git reflog
 ```
 
-> f7efadb (HEAD -> main, feature) HEAD@{0}: reset: moving to f7efadb		
-> f7efadb (HEAD -> main, feature) HEAD@{1}: reset: moving to f7efadb		
-> f7efadb (HEAD -> main, feature) HEAD@{2}: reset: moving to f7efadb		
-> 4e4281f HEAD@{3}: commit (amend): Update yearsUntilRetirement() function.		
-> 04fd5b8 HEAD@{4}: commit (amend): 1 3 41		
-> 848aa1d HEAD@{5}: commit (amend): Updated yearsUntilRetirement() function.		
-> c42282c HEAD@{6}: commit: Updated calculateAge function.		
-> f7efadb (HEAD -> main, feature) HEAD@{7}: checkout: moving from feature to main		
-> f7efadb (HEAD -> main, feature) HEAD@{8}: checkout: moving from main to feature		
-> f7efadb (HEAD -> main, feature) HEAD@{9}: commit: Add functions.		
+> f7efadb (HEAD -> main, feature) HEAD@{0}: reset: moving to f7efadb			
+> f7efadb (HEAD -> main, feature) HEAD@{1}: reset: moving to f7efadb			
+> f7efadb (HEAD -> main, feature) HEAD@{2}: reset: moving to f7efadb			
+> 4e4281f HEAD@{3}: commit (amend): Update yearsUntilRetirement() function.			
+> 04fd5b8 HEAD@{4}: commit (amend): 1 3 41			
+> 848aa1d HEAD@{5}: commit (amend): Updated yearsUntilRetirement() function.			
+> c42282c HEAD@{6}: commit: Updated calculateAge function.			
+> f7efadb (HEAD -> main, feature) HEAD@{7}: checkout: moving from feature to main			
+> f7efadb (HEAD -> main, feature) HEAD@{8}: checkout: moving from main to feature			
+> f7efadb (HEAD -> main, feature) HEAD@{9}: commit: Add functions.			
 > 9134a10 HEAD@{10}: commit (initial): Initial commit.
 
 **NOTE:** Git garbage collection will only store these changes for around 30 days.
@@ -1856,12 +1855,12 @@ When we go back into our code we can see the retirement age has been increased t
 
 If we do a ``git log`` we can see that we have our commit back (848aa1d).
 
-> commit 848aa1df9301323df6fa0e5a05bd71b4795ad8a0 (HEAD)		
-> Author: Alan Robson <alanr@live.com.au>		
-> Date:   Wed Jun 15 17:29:53 2022 +1000		
-> 		
->     Updated yearsUntilRetirement() function.		
-> 		
+> commit 848aa1df9301323df6fa0e5a05bd71b4795ad8a0 (HEAD)			
+> Author: Alan Robson <alanr@live.com.au>			
+> Date:   Wed Jun 15 17:29:53 2022 +1000			
+> 			
+>     Updated yearsUntilRetirement() function.			
+> 			
 > commit f7efadb366c0
 
 Right now we are in a detached HEAD state. A simple explanation for this is that we aren't on a branch and where we are at present will be trashed in the future.
@@ -1874,9 +1873,9 @@ We can create a branch to store these changes.
 
 Now if we do a ``git branch`` we can see.
 
-> \* (HEAD detached at 848aa1d)		
->   backup		
->   feature		
+> \* (HEAD detached at 848aa1d)			
+>   backup			
+>   feature			
 >   main
 
 Now, we want to get back to the **main** branch.
@@ -1893,7 +1892,7 @@ Now do a ``branch`` again.
 
 We get the following message.
 
-> Previous HEAD position was 848aa1d Updated yearsUntilRetirement() function.		
+> Previous HEAD position was 848aa1d Updated yearsUntilRetirement() function.			
 > Switched to branch 'main'
 
 Checking our code we are back to.
@@ -1902,8 +1901,8 @@ Checking our code we are back to.
 
 Check the branches.
 
->   backup		
->   feature		
+>   backup			
+>   feature			
 > \* main
 
 ``git reflog`` can be a lifesaver if you thought you lost some code and can really help you out if you know how to use it.
@@ -1922,20 +1921,20 @@ Now.
 	git log
 ```
 
-> commit 848aa1df9301323df6fa0e5a05bd71b4795ad8a0 (HEAD -> backup)		
-> Author: Alan Robson <alanr@live.com.au>		
-> Date:   Wed Jun 15 17:29:53 2022 +1000		
-> 		
->     Updated yearsUntilRetirement() function.		
-> 		
-> commit f7efadb366c096ea27d5a39eb21ef6acd0987d52 (main, feature)		
-> Author: Alan Robson <alanr@live.com.au>		
-> Date:   Wed Jun 15 16:32:31 2022 +1000		
-> 		
->     Add functions.		
-> 		
-> commit 9134a1035b5fe2ce5860c15994c073e908fdc609		
-> Author: Alan Robson <alanr@live.com.au>		
+> commit 848aa1df9301323df6fa0e5a05bd71b4795ad8a0 (HEAD -> backup)			
+> Author: Alan Robson <alanr@live.com.au>			
+> Date:   Wed Jun 15 17:29:53 2022 +1000			
+> 			
+>     Updated yearsUntilRetirement() function.			
+> 			
+> commit f7efadb366c096ea27d5a39eb21ef6acd0987d52 (main, feature)			
+> Author: Alan Robson <alanr@live.com.au>			
+> Date:   Wed Jun 15 16:32:31 2022 +1000			
+> 			
+>     Add functions.			
+> 			
+> commit 9134a1035b5fe2ce5860c15994c073e908fdc609			
+> Author: Alan Robson <alanr@live.com.au>			
 > Date:   Wed Jun 15 16:13:41 2022 +1000
 
 We want to see what was changed in hash 848aa1d.
@@ -1946,20 +1945,20 @@ We want to see what was changed in hash 848aa1d.
 
 Returns.
 
-> diff --git a/test.js b/test.js		
-> index 5a63442..0f2c435 100644		
-> --- a/test.js		
-> +++ b/test.js		
-> @@ -9,7 +9,7 @@ console.log('The age is ' + age); // The age is 34		
-> 		
->  let yearsUntilRetirement = (year, firstName) => {		
->      let age = calculateAge(year); // you can call a function within a function		
->
-> * let retirement = 67 - age;		
->
-> * let retirement = 65 - age;		
-> 		
->      if (retirement > 0) {		
+> diff --git a/test.js b/test.js    
+> index 5a63442..0f2c435 100644    
+> --- a/test.js    
+> +++ b/test.js    
+> @@ -9,7 +9,7 @@ console.log('The age is ' + age); // The age is 34    
+>    
+>  let yearsUntilRetirement = (year, firstName) => {    
+>      let age = calculateAge(year); // you can call a function within a function    
+>    
+> \* let retirement = 67 - age;    
+>    
+> \* let retirement = 65 - age;    
+>     
+>      if (retirement > 0) {    
 >          console.log(firstName + ' retires in ' + retirement + ' years.');
 
 This now shows us that in the backup we changed the retirement age from 65 to 67.
