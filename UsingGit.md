@@ -6,6 +6,14 @@ Check the version of Git you are currently using.
 	git --version
 ```
 
+## Set the default branch to main
+
+```bash
+	git config --global init.defaultBranch main
+```
+
+Now every time I create a new Git repository it will start on the ``main`` branch.
+
 ## Update Git
 
 ```bash
